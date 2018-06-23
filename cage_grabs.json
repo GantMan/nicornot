@@ -1,0 +1,58 @@
+{
+  "Records": [
+    {
+      "keywords": "nic cage",
+      "limit": 500,
+      "format": "jpg",
+      "type": "face",
+      "chromedriver": "/usr/local/bin/chromedriver",
+      "output_directory": "nicornot/Training Data/",
+      "image_directory": "nic"
+    },
+    {
+      "keywords": "nic cage",
+      "limit": 500,
+      "format": "png",
+      "type": "face",
+      "chromedriver": "/usr/local/bin/chromedriver",
+      "output_directory": "nicornot/Training Data/",
+      "image_directory": "nic"
+    },
+    {
+      "keywords": "celebrity",
+      "limit": 500,
+      "format": "jpg",
+      "type": "face",
+      "chromedriver": "/usr/local/bin/chromedriver",
+      "output_directory": "nicornot/Training Data/",
+      "image_directory": "not"
+    },
+    {
+      "keywords": "celebrity",
+      "limit": 500,
+      "format": "png",
+      "type": "face",
+      "chromedriver": "/usr/local/bin/chromedriver",
+      "output_directory": "nicornot/Training Data/",
+      "image_directory": "not"
+    },
+    {
+      "keywords": "Chad Kroeger",
+      "limit": 500,
+      "format": "png",
+      "type": "face",
+      "chromedriver": "/usr/local/bin/chromedriver",
+      "output_directory": "nicornot/Training Data/",
+      "image_directory": "not"
+    },
+    {
+      "keywords": "Chad Kroeger",
+      "limit": 500,
+      "format": "jpg",
+      "type": "face",
+      "chromedriver": "/usr/local/bin/chromedriver",
+      "output_directory": "nicornot/Training Data/",
+      "image_directory": "not"
+    }
+  ]
+}
