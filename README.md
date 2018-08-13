@@ -32,3 +32,12 @@ $ ./faceoff.sh
 ```
 
 If it fails on an image, delete the source image.  Then when it is 100% successful, all faces will be stored to `nicornotfaces` folders as JPGs; go through the resulting files and delete false positives for nic.
+
+
+### Install Coremltools
+For running `convert.py` make sure you have 'coremltools' installed first.
+
+```
+$ pip install -U coremltools --user
+```
+
