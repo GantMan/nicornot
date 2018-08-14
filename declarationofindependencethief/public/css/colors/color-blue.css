@@ -1,0 +1,44 @@
+/*
+ Blue: #2daccc;
+ */
+
+.top-bar, .triangle, .milestone-section .experience:after, .milestone-section .triangle, .overlay, .blog-widget .date,
+.pricebox-heading1, .price-box .arrow, footer .btn, .copyright .scrolltop, .team-section .team-footer, .contact-section .arrow,
+.works-section .hover-box {
+	background-color: #2daccc;
+}
+a:focus, a:hover, .section-title h5, .section-title1 h5, .red, .navbar-default .navbar-right li a.active, .navbar-default 
+.navbar-right li a:hover, .navbar-default .navbar-right li a:focus, .navbar-default .navbar-right li.active a, .carousel-caption h3,
+.filter li a:hover, .filter li a:active, .filter li a:focus, .filter li a.active, .pricebox-body h1, .pricebox-body1 h1, 
+.copyright p a, .blog-box a:hover, .works-section .filter-button:hover  {
+	color: #2daccc;
+}
+.brand-content:hover {
+	border: 3px solid #2daccc;
+}
+.triangle:after {
+	border-color: #2daccc;
+	border-top-color:transparent;
+  	border-bottom-color:transparent;
+  	border-right-color:transparent;
+}
+.works-section .filter-button:active,
+.works-section .filter-button:hover, 
+.works-section .filter-button:focus,
+.filter li a.active {
+	border-bottom: 2px solid #2daccc;
+	border-style: dashed;
+}
+.pricebox-body1 {
+	border-bottom: 5px solid #2daccc;
+}
+.price-box .arrow-right:after, .contact-section .arrow-right:after {
+	border-left: 20px solid #2daccc;
+}
+.blog-box:hover {
+	border: 4px solid #2daccc;
+}
+#quote-carousel .carousel-indicators .active {
+	border-color: #2daccc;
+}
+

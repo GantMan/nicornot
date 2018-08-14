@@ -1,40 +1,876 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="theme-color" content="#000000">
-    <!--
-      manifest.json provides metadata used when your web app is added to the
-      homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
-    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+<html lang="zxx">
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Blimey! - Single Page HTML5 Corporate Template</title>
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>
-      You need to enable JavaScript to run this app.
-    </noscript>
+	<!-- Bootstrap -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/lightbox.css">
+    <link rel="stylesheet" href="css/color-switcher.css">
+    <link rel="shortcut icon" href="img/ico/favicon1.png">
+
+</head>
+<body>
+    <div id="preloader">
+        <div class="spinner">
+          <div class="double-bounce1"></div>
+          <div class="double-bounce2"></div>
+        </div>
+    </div>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+	<div class="header">
+		<div class="top-bar">
+			<span><i class="fa fa-map-marker"></i> 45 South Ave, Melbourne - 654 002</span>
+		</div> <!-- /top-bar -->
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
+		<nav class="navbar navbar-default">
+		  	<div class="container">
+		    	<!-- Brand and toggle get grouped for better mobile display -->
+		    	<div class="navbar-header">
+			      	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				        <span class="sr-only">Toggle navigation</span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+			      	</button>
+			      	<a class="navbar-brand" href="index.html">
+                        <img src="img/logo.png" class="img-responsive" alt="logo" />
+                    </a>
+		    	</div>
+
+		    	<!-- Collect the nav links, forms, and other content for toggling -->
+		    	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		      		<ul class="nav navbar-nav navbar-right">
+		        		<li><a href="#home">Home</a></li>
+		        		<li><a href="#about">About</a></li>
+		        		<li><a href="#services">Services</a></li>
+		        		<li><a href="#works">Works</a></li>
+		        		<li><a href="#news">News</a></li>
+		        		<li><a href="#pricing">Pricing</a></li>
+		        		<li><a href="#contact">Contact</a></li>
+		      		</ul><!-- /navbar-right -->
+		    	</div><!-- /.navbar-collapse -->
+		  	</div><!-- /.container -->
+		</nav><!-- /navbar -->
+
+		<div id="carousel-wrapper">
+			<div id="home-carousel" class="carousel slide" data-ride="carousel">
+				<div class="container">
+					<div class="carousel-arrows">
+						<a class="home-carousel-left" href="#home-carousel" data-slide="prev"><i class="fa fa-long-arrow-left"></i></a>
+						<a class="home-carousel-right" href="#home-carousel" data-slide="next"><i class="fa fa-long-arrow-right"></i></a>
+					</div>
+				</div>
+				<div class="carousel-inner">
+					<div class="item item1 active">
+						<div class="carousel-caption container">
+							<h3 class="wow fadeInUp animation-3s">Creative Design</h3>
+							<h1 class="wow fadeInUp animation-4s">INNOVATIVE DESIGN CREATORS</h1>
+							<p class="wow fadeInUp animation-5s">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+						</div>
+					</div><!-- /item -->
+					<div class="item item2">
+						<div class="carousel-caption container">
+							<h3 class="wow fadeInUp animation-3s">Innovative Ideas</h3>
+							<h1 class="wow fadeInUp animation-4s">WE CREATE SUCCESS</h1>
+							<p class="wow fadeInUp animation-5s">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+						</div>
+					</div><!-- /item -->
+					<div class="item item3">
+						<div class="carousel-caption container">
+							<h3 class="wow fadeInUp animation-3s">Incredible Business</h3>
+							<h1 class="wow fadeInUp animation-4s">BEST CORPORATE APPROACH</h1>
+							<p class="wow fadeInUp animation-5s">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+						</div>
+					</div><!-- /item -->
+				</div><!-- /carousel-inner -->
+
+				<div class="brand-promotion">
+					<div class="container">
+						<div class="media row">
+							<div class="col-sm-4 col-xs-12">
+								<div class="brand-content wow fadeInUp animation-3s">
+									<img class="img-responsive" src="img/ico/diamond.png" alt="">
+									<div class="media-body">
+										<h4>Branding</h4>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+										tempor incididunt ut labore et dolore.</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-4 col-xs-12">
+								<div class="brand-content wow fadeInUp animation-4s">
+									<img class="img-responsive" src="img/ico/briefcase.png" alt="">
+									<div class="media-body">
+										<h4>Consulting</h4>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+										tempor incididunt ut labore et dolore.</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-4 col-xs-12">
+								<div class="brand-content wow fadeInUp animation-5s">
+									<img class="img-responsive" src="img/ico/piggy-bank.png" alt="">
+									<div class="media-body">
+										<h4>Finance</h4>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+										tempor incididunt ut labore et dolore.</p>
+									</div>
+								</div>
+							</div>
+						</div><!-- /media -->
+					</div><!-- /container -->
+				</div><!--/#brand-promotion-->
+			</div> <!--/#home-carousel-->
+	    </div><!--/#carousel-wrapper-->
+	</div><!-- /header -->
+
+	<div class="about-section section-padding" id="about">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 col-sm-6">
+					<img src="img/about.png" class="img-responsive wow fadeInLeft animation-3s" alt="about" />
+				</div>
+
+				<div class="col-md-6 col-sm-6">
+					<div class="section-title wow fadeInDown animation-3s">
+						<h5>About Us</h5>
+						<h1>WHO WE ARE</h1>
+					</div><!-- /section-title -->
+
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+					<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+					<h1 class="left">25 <span>Years of Experience</span></h1>
+                    <div class="triangle"></div>
+				</div>
+
+			</div><!-- /row -->
+		</div><!-- /container -->
+	</div><!-- /about-section -->
+
+	<div class="service-section section-padding" id="services">
+    	<div class="container">
+    		<div class="section-title1">
+				<h5 class="text-center">Our Services</h5>
+				<h1 class="text-center">What We Do</h1>
+			</div><!-- /section-title -->
+
+    		<div class="row mar-30">
+    			<div class="col-md-4 col-sm-4 col-xs-12 text-center">
+    				<div class="service-widget wow zoomIn animation-3s">
+    					<img src="img/ico/briefcase.png" class="img-responsive" alt="">
+    					<h3>Business Consulting</h3>
+	    				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	    				tempor incididunt ut labore aliqua.</p>
+    				</div><!-- /service-widget -->
+    			</div>
+
+    			<div class="col-md-4 col-sm-4 col-xs-12 text-center">
+    				<div class="service-widget wow zoomIn animation-4s">
+    					<img src="img/ico/bank.png" class="img-responsive" alt="">
+    					<h3>IT Management</h3>
+	    				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	    				tempor incididunt ut labore aliqua.</p>
+    				</div><!-- /service-widget -->
+    			</div>
+
+    			<div class="col-md-4 col-sm-4 col-xs-12 text-center">
+    				<div class="service-widget wow zoomIn animation-5s">
+    					<img src="img/ico/money-bag.png" class="img-responsive" alt="">
+    					<h3>Online Consulting</h3>
+	    				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	    				tempor incididunt ut labore aliqua.</p>
+    				</div><!-- /service-widget -->
+    			</div>
+    		</div><!-- /row -->
+
+    		<div class="row">
+    			<div class="col-md-offset-2 col-md-4 col-xs-12 col-sm-offset-2 col-sm-4 text-center">
+    				<div class="service-widget wow zoomIn animation-6s">
+    					<img src="img/ico/diamond.png" class="img-responsive" alt="">
+    					<h3>Branding</h3>
+	    				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	    				tempor incididunt ut labore aliqua.</p>
+    				</div><!-- /service-widget -->
+    			</div>
+
+    			<div class="col-md-4 col-sm-4 col-xs-12 text-center">
+    				<div class="service-widget wow zoomIn animation-7s">
+    					<img src="img/ico/balance.png" class="img-responsive" alt="">
+    					<h3>Marketing</h3>
+	    				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	    				tempor incididunt ut labore aliqua.</p>
+    				</div><!-- /service-widget -->
+    			</div>
+    		</div><!-- /row -->
+    	</div><!-- /container -->
+    </div><!-- /service-section -->
+
+    <div class="milestone-section section-padding">
+    	<div class="container">
+    		<div class="section-title1">
+				<h5>Milestones</h5>
+				<h1>Some Fun Facts</h1>
+			</div><!-- /section-title -->
+
+    		<div class="row">
+    			<div class="col-md-2 col-sm-2 col-xs-3">
+    				<span class="big timer" data-from="0" data-to="200" data-speed="40000" data-refresh-interval="50"></span>
+                    <div class="triangle"></div>
+    				<h6>Awards</h6>
+    			</div>
+
+    			<div class="col-md-2 col-sm-2 col-xs-3">
+    				<span class="timer big" data-from="0" data-to="103" data-speed="40000" data-refresh-interval="50"></span>
+                    <div class="triangle"></div>
+    				<h6>Employees</h6>
+    			</div>
+    			<div class="col-md-2 col-sm-2 col-xs-3">
+    				<span class="timer big" data-from="0" data-to="546" data-speed="35000" data-refresh-interval="50"></span>
+                    <div class="triangle"></div>
+    				<h6>Branches</h6>
+    			</div>
+    		</div><!-- /row -->
+    	</div><!-- /container -->
+    </div><!-- /milestone-section -->
+
+    <div class="works-section" id="works">
+        <div class="container">
+            <div class="section-title1">
+                <h5 class="text-center">Works</h5>
+                <h1 class="text-center">Our Recent Works</h1>
+            </div><!-- /section-title -->
+
+            <div class="filters text-center">
+                <button class="btn btn-default filter-button" data-filter="all">All</button>
+                <button class="btn btn-default filter-button" data-filter="branding">Branding</button>
+                <button class="btn btn-default filter-button" data-filter="marketing">Marketing</button>
+                <button class="btn btn-default filter-button" data-filter="consulting">Consulting</button>
+                <button class="btn btn-default filter-button" data-filter="management">Management</button>
+            </div>
+
+            <div class="gallery_product col-md-3 col-sm-3 col-xs-6 filter branding nopad">
+                <div class="img-box">
+                    <img src="img/portfolio/p1.jpg" class="img-responsive" alt="">
+                    <div class="hover-box">
+                        <h3>Branding</h3>
+                        <a href="img/portfolio/p1.jpg" data-lightbox="image-1"><i class="fa fa-eye"></i></a>
+                    </div><!-- /hover-box -->
+                </div><!-- /img-box -->
+            </div>
+
+            <div class="gallery_product col-md-3 col-sm-3 col-xs-6 filter marketing nopad">
+                <div class="img-box">
+                    <img src="img/portfolio/p1.jpg" class="img-responsive" alt="">
+                    <div class="hover-box">
+                        <h3>Branding</h3>
+                        <a href="img/portfolio/p1.jpg" data-lightbox="image-1"><i class="fa fa-eye"></i></a>
+                    </div><!-- /hover-box -->
+                </div><!-- /img-box -->
+            </div>
+
+            <div class="gallery_product col-md-3 col-sm-3 col-xs-6 filter branding marketing nopad">
+                <div class="img-box">
+                    <img src="img/portfolio/p1.jpg" class="img-responsive" alt="">
+                    <div class="hover-box">
+                        <h3>Branding</h3>
+                        <a href="img/portfolio/p1.jpg" data-lightbox="image-1"><i class="fa fa-eye"></i></a>
+                    </div><!-- /hover-box -->
+                </div><!-- /img-box -->
+            </div>
+
+            <div class="gallery_product col-md-3 col-sm-3 col-xs-6 filter management nopad">
+                <div class="img-box">
+                    <img src="img/portfolio/p1.jpg" class="img-responsive" alt="">
+                    <div class="hover-box">
+                        <h3>Branding</h3>
+                        <a href="img/portfolio/p1.jpg" data-lightbox="image-1"><i class="fa fa-eye"></i></a>
+                    </div><!-- /hover-box -->
+                </div><!-- /img-box -->
+            </div>
+
+            <div class="gallery_product col-md-3 col-sm-3 col-xs-6 filter consulting nopad">
+                <div class="img-box">
+                    <img src="img/portfolio/p1.jpg" class="img-responsive" alt="">
+                    <div class="hover-box">
+                        <h3>Branding</h3>
+                        <a href="img/portfolio/p1.jpg" data-lightbox="image-1"><i class="fa fa-eye"></i></a>
+                    </div><!-- /hover-box -->
+                </div><!-- /img-box -->
+            </div>
+
+            <div class="gallery_product col-md-3 col-sm-3 col-xs-6 filter management nopad">
+                <div class="img-box">
+                    <img src="img/portfolio/p1.jpg" class="img-responsive" alt="">
+                    <div class="hover-box">
+                        <h3>Branding</h3>
+                        <a href="img/portfolio/p1.jpg" data-lightbox="image-1"><i class="fa fa-eye"></i></a>
+                    </div><!-- /hover-box -->
+                </div><!-- /img-box -->
+            </div>
+
+            <div class="gallery_product col-md-3 col-sm-3 col-xs-6 filter consulting nopad">
+                <div class="img-box">
+                    <img src="img/portfolio/p1.jpg" class="img-responsive" alt="">
+                    <div class="hover-box">
+                        <h3>Branding</h3>
+                        <a href="img/portfolio/p1.jpg" data-lightbox="image-1"><i class="fa fa-eye"></i></a>
+                    </div><!-- /hover-box -->
+                </div><!-- /img-box -->
+            </div>
+
+            <div class="gallery_product col-md-3 col-sm-3 col-xs-6 filter management nopad">
+                <div class="img-box">
+                    <img src="img/portfolio/p1.jpg" class="img-responsive" alt="">
+                    <div class="hover-box">
+                        <h3>Branding</h3>
+                        <a href="img/portfolio/p1.jpg" data-lightbox="image-1"><i class="fa fa-eye"></i></a>
+                    </div><!-- /hover-box -->
+                </div><!-- /img-box -->
+            </div>
+        </div><!-- /container -->
+    </div><!-- /works-section -->
+
+    <div class="blog-section section-padding" id="news">
+        <div class="container">
+            <div class="section-title1">
+                <h5 class="text-center">News</h5>
+                <h1 class="text-center">Our Popular Blogs</h1>
+            </div><!-- /section-title -->
+
+            <div class="row">
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="blog-box">
+                        <h5>21 Sep <span class="red pull-right">2017</span></h5><hr>
+                        <h3>Best Consulting Service</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat.</p>
+                        <h6><a href="#">Rean More <i class="fa fa-angle-right"></i></a></h6>
+                    </div><!-- /blog-box -->
+                </div>
+
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="blog-box">
+                        <h5>15 Jan <span class="red pull-right">2018</span></h5><hr>
+                        <h3>Company of the year</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat.</p>
+                        <h6><a href="#">Rean More <i class="fa fa-angle-right"></i></a></h6>
+                    </div><!-- /blog-box -->
+                </div>
+
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="blog-box">
+                        <h5>04 Mar <span class="red pull-right">2016</span></h5><hr>
+                        <h3>Best Consulting Service</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat.</p>
+                        <h6><a href="#">Rean More <i class="fa fa-angle-right"></i></a></h6>
+                    </div><!-- /blog-box -->
+                </div>
+            </div><!-- /row -->
+        </div><!-- /container -->
+    </div><!-- /blog-section --><hr>
+
+    <div class="team-section section-padding " id="blog">
+        <div class="container">
+            <div class="section-title1">
+                <h5 class="text-center">Crew</h5>
+                <h1 class="text-center">Meet Our Team</h1>
+            </div><!-- /section-title -->
+
+            <div class="row">
+                <div class="col-md-3 col-sm-3 col-xs-6 nopad">
+                    <div class="team-box wow zoomIn animation-3s">
+                        <img src="img/team1.jpg" class="img-responsive" alt="">
+                        <div class="team-footer">
+                            <h4>Sylvia Marie</h4>
+                            <ul>
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-tumblr"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                            </ul>
+                        </div><!-- /team-footer -->
+                    </div><!-- /team-box -->
+                </div>
+
+                <div class="col-md-3 col-sm-3 col-xs-6 nopad">
+                    <div class="team-box wow zoomIn animation-4s">
+                        <img src="img/team2.jpg" class="img-responsive" alt="">
+                        <div class="team-footer">
+                            <h4>Tom Hiddleston</h4>
+                            <ul>
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-tumblr"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                            </ul>
+                        </div><!-- /team-footer -->
+                    </div><!-- /team-box -->
+                </div>
+
+                <div class="col-md-3 col-sm-3 col-xs-6 nopad">
+                    <div class="team-box wow zoomIn animation-5s">
+                        <img src="img/team1.jpg" class="img-responsive" alt="">
+                        <div class="team-footer">
+                            <h4>Judy Hopps</h4>
+                            <ul>
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-tumblr"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                            </ul>
+                        </div><!-- /team-footer -->
+                    </div><!-- /team-box -->
+                </div>
+
+                <div class="col-md-3 col-sm-3 col-xs-6 nopad">
+                    <div class="team-box wow zoomIn animation-6s">
+                        <img src="img/team2.jpg" class="img-responsive" alt="">
+                        <div class="team-footer">
+                            <h4>Sara Jay</h4>
+                            <ul>
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-tumblr"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                            </ul>
+                        </div><!-- /team-footer -->
+                    </div><!-- /team-box -->
+                </div>
+            </div><!-- /row -->
+
+            <div class="row">
+                <div class="col-md-3 col-sm-3 col-xs-6 nopad">
+                    <div class="team-box wow zoomIn animation-6s">
+                        <img src="img/team2.jpg" class="img-responsive" alt="">
+                        <div class="team-footer">
+                            <h4>Judy Hopps</h4>
+                            <ul>
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-tumblr"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                            </ul>
+                        </div><!-- /team-footer -->
+                    </div><!-- /team-box -->
+                </div>
+
+                <div class="col-md-3 col-sm-3 col-xs-6 nopad">
+                    <div class="team-box wow zoomIn animation-5s">
+                        <img src="img/team1.jpg" class="img-responsive" alt="">
+                        <div class="team-footer">
+                            <h4>Sara Jay</h4>
+                            <ul>
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-tumblr"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                            </ul>
+                        </div><!-- /team-footer -->
+                    </div><!-- /team-box -->
+                </div>
+
+                <div class="col-md-3 col-sm-3 col-xs-6 nopad">
+                    <div class="team-box wow zoomIn animation-4s">
+                        <img src="img/team2.jpg" class="img-responsive" alt="">
+                        <div class="team-footer">
+                            <h4>Tom Hiddleston</h4>
+                            <ul>
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-tumblr"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                            </ul>
+                        </div><!-- /team-footer -->
+                    </div><!-- /team-box -->
+                </div>
+
+                <div class="col-md-3 col-sm-3 col-xs-6 nopad">
+                    <div class="team-box wow zoomIn animation-3s">
+                        <img src="img/team1.jpg" class="img-responsive" alt="">
+                        <div class="team-footer">
+                            <h4>Sylvia Marie</h4>
+                            <ul>
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-tumblr"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                            </ul>
+                        </div><!-- /team-footer -->
+                    </div><!-- /team-box -->
+                </div>
+            </div><!-- /row -->
+        </div><!-- /container -->
+    </div><!-- /team-section -->
+
+    <div class="testimonial-section section-padding">
+        <div class="container">
+            <div class="section-title1 text-center">
+                <h5>Peoples</h5>
+                <h1>What Our Customers Say</h1>
+            </div><!-- /section-title -->
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="carousel slide" data-ride="carousel" id="quote-carousel">
+                        <div class="carousel-inner text-center">
+                            <!-- Quote 1 -->
+                            <div class="item active">
+                                <blockquote>
+                                    <div class="row">
+                                        <div class="col-sm-8 col-sm-offset-2">
+                                            <h4>Mary Kom</h4>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. !</p>
+                                        </div>
+                                    </div>
+                                </blockquote>
+                            </div>
+
+                            <!-- Quote 2 -->
+                            <div class="item">
+                                <blockquote>
+                                    <div class="row">
+                                        <div class="col-sm-8 col-sm-offset-2">
+                                            <h4>James Watson</h4>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
+                                        </div>
+                                    </div>
+                                </blockquote>
+                            </div>
+
+                            <!-- Quote 3 -->
+                            <div class="item">
+                                <blockquote>
+                                    <div class="row">
+                                        <div class="col-sm-8 col-sm-offset-2">
+                                            <h4>Kane Washington</h4>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. .</p>
+                                        </div>
+                                    </div>
+                                </blockquote>
+                            </div>
+
+                            <!-- Bottom Carousel Indicators -->
+                            <ol class="carousel-indicators">
+                                <li data-target="#quote-carousel" data-slide-to="0" class="active">
+                                    <img class="img-responsive " src="img/testi-1.png" alt="">
+                                </li>
+                                <li data-target="#quote-carousel" data-slide-to="1">
+                                    <img class="img-responsive" src="img/testi-1.png" alt="">
+                                </li>
+                                <li data-target="#quote-carousel" data-slide-to="2">
+                                    <img class="img-responsive" src="img/testi-1.png" alt="">
+                                </li>
+                            </ol>
+                        </div>
+
+                        <!-- Carousel Buttons Next/Prev -->
+                        <a data-slide="prev" href="#quote-carousel" class="left carousel-control">
+                            <i class="fa fa-angle-left"></i>
+                        </a>
+                        <a data-slide="next" href="#quote-carousel" class="right carousel-control">
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="client-section">
+                <div class="row">
+                    <div class="col-md-2 col-sm-2 col-xs-4 text-center wow zoomIn animation-2s">
+                        <img src="img/partner/01.png" class="img-responsive" alt="">
+                    </div>
+                    <div class="col-md-2 col-sm-2 col-xs-4 text-center wow zoomIn animation-3s">
+                        <img src="img/partner/02.png" class="img-responsive" alt="">
+                    </div>
+                    <div class="col-md-2 col-sm-2 col-xs-4 text-center wow zoomIn animation-4s">
+                        <img src="img/partner/03.png" class="img-responsive" alt="">
+                    </div>
+                    <div class="col-md-2 col-sm-2 col-xs-4 text-center wow zoomIn animation-5s">
+                        <img src="img/partner/04.png" class="img-responsive" alt="">
+                    </div>
+                    <div class="col-md-2 col-sm-2 col-xs-4 text-center wow zoomIn animation-6s">
+                        <img src="img/partner/05.png" class="img-responsive" alt="">
+                    </div>
+                    <div class="col-md-2 col-sm-2 col-xs-4 text-center wow zoomIn animation-7s">
+                        <img src="img/partner/01.png" class="img-responsive" alt="">
+                    </div>
+                </div><!-- /row -->
+            </div><!-- /client-section -->
+        </div><!-- /container -->
+    </div><!-- /testimonial-section -->
+
+    <div class="pricing-section section-padding" id="pricing">
+        <div class="container">
+            <div class="section-title1 text-center">
+                <h5>Cost</h5>
+                <h1>Our Pricing</h1>
+            </div><!-- /section-title -->
+
+            <div class="row">
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="pricebox">
+                        <div class="plan">
+                            <header>
+                                <p class="plan-title">Starter</p>
+                                <div class="plan-cost">
+                                    <span class="plan-price">$19</span>
+                                    <span class="plan-type">/ month</span>
+                                </div>
+                            </header>
+                            <ul class="plan-features">
+                                <li>5GB Linux Web Space</li>
+                                <li>5 MySQL Databases</li>
+                                <li>Unlimited Email</li>
+                                <li>250Gb mo Transfer</li>
+                                <li>24/7 Tech Support</li>
+                                <li>Daily Backups</li>
+                            </ul>
+                            <div class="plan-select"><a href="">Select Plan</a></div>
+                        </div>
+                    </div><!-- /pricebox -->
+                </div>
+
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="pricebox">
+                        <div class="plan">
+                            <header>
+                                <p class="plan-title">Basic</p>
+                                <div class="plan-cost">
+                                    <span class="plan-price">$29</span>
+                                    <span class="plan-type">/ month</span>
+                                </div>
+                            </header>
+                            <ul class="plan-features">
+                              <li>10GB Linux Web Space</li>
+                              <li>10 MySQL Databases</li>
+                              <li>Unlimited Email</li>
+                              <li>500Gb mo Transfer</li>
+                              <li>24/7 Tech Support</li>
+                              <li>Daily Backups</li>
+                            </ul>
+                            <div class="plan-select"><a href="">Select Plan</a></div>
+                        </div>
+                    </div><!-- /pricebox -->
+                </div>
+
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="pricebox">
+                        <div class="plan featured">
+                            <header>
+                                <p class="plan-title">Professional</p>
+                                <div class="plan-cost">
+                                    <span class="plan-price">$49</span>
+                                    <span class="plan-type">/ month</span>
+                                </div>
+                            </header>
+                            <ul class="plan-features">
+                                <li>25GB Linux Web Space</li>
+                                <li>25 MySQL Databases</li>
+                                <li>Unlimited Email</li>
+                                <li>2000Gb mo Transfer</li>
+                                <li>24/7 Tech Support</li>
+                                <li>Daily Backups</li>
+                            </ul>
+                            <div class="plan-select"><a href="">Select Plan</a></div>
+                        </div>
+                    </div><!-- /pricebox -->
+                </div>
+
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="pricebox">
+                        <div class="plan">
+                            <header>
+                                <p class="plan-title">Ultra</p>
+                                <div class="plan-cost">
+                                    <span class="plan-price">$99</span>
+                                    <span class="plan-type">/ month</span>
+                                </div>
+                            </header>
+                                <ul class="plan-features">
+                                    <li>100GB Linux Web Space</li>
+                                    <li>Unlimited MySQL Databases</li>
+                                    <li>Unlimited Email</li>
+                                    <li>10000Gb mo Transfer</li>
+                                    <li>24/7 Tech Support</li>
+                                    <li>Daily Backups</li>
+                                </ul>
+                            <div class="plan-select"><a href="">Select Plan</a></div>
+                        </div><!-- /pricebox -->
+                    </div>
+                </div>
+            </div><!-- /row -->
+        </div><!-- /container -->
+    </div><!-- /pricing-section -->
+
+    <div class="contact-section" id="contact">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d145934.05639728578!2d144.95700543472745!3d-37.83536538103272!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad646b5d2ba4df7%3A0x4045675218ccd90!2sMelbourne+VIC%2C+Australia!5e0!3m2!1sen!2sin!4v1518067416285" style="" allowfullscreen></iframe>
+
+        <div class="form-section text-left wow fadeInUp">
+            <h2>GET IN TOUCH!</h2>
+            <form class="contact-form">
+                <div class="input-group">
+                    <input type="text" name="name" placeholder="Enter Your Name*">
+                </div>
+
+                <div class="input-group">
+                    <input type="email" name="email" placeholder="Enter Your Email*">
+                </div>
+
+                <div class="input-group">
+                    <input type="number" name="number" placeholder="Enter Your Number">
+                </div>
+
+                <div class="input-group">
+                    <textarea placeholder="Your Message*" rows="3"></textarea>
+                </div>
+
+                <button type="submit" class="arrow arrow-right">SEND</button>
+            </form>
+        </div><!-- /form-section -->
+    </div><!-- /contact-section -->
+
+    <footer class="section-padding">
+    	<div class="container">
+    		<div class="row">
+    			<div class="col-md-4 col-sm-6 mar-50">
+    				<div class="footer-title">
+    					<img src="img/logo.png" class="img-responsive footer-logo" alt="">
+    				</div><!-- /footer-title -->
+    				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    				tempor incididunt ut labore et dolore magna aliqua.</p>
+    				<h3><i class="fa fa-phone"></i> (+61) 123 456 7899</h3>
+    				<h3><i class="fa fa-send"></i> info@blimey.com</h3>
+    				<h3><i class="fa fa-map-marker"></i> 45, South Ave, Melbourne.</h3>
+    			</div>
+
+    			<div class="col-md-4 col-sm-6 mar-50">
+    				<div class="footer-title">
+    					<h1 class="red"><u>QUICK LINKS</u></h1>
+    				</div><!-- /footer-title -->
+    				<ul>
+    					<li class="f-links"><a href="#"><i class="fa fa-angle-right"></i> Terms and Conditions</a></li>
+    					<li class="f-links"><a href="#"><i class="fa fa-angle-right"></i> Privacy and Policy</a></li>
+    					<li class="f-links"><a href="#"><i class="fa fa-angle-right"></i> Pricing Tables</a></li>
+    					<li class="f-links"><a href="#"><i class="fa fa-angle-right"></i> About Us</a></li>
+    					<li class="f-links"><a href="#"><i class="fa fa-angle-right"></i> Contact</a></li>
+    					<li class="f-links"><a href="#"><i class="fa fa-angle-right"></i> Our Services</a></li>
+    				</ul>
+    			</div>
+
+    			<div class="col-md-4 col-sm-6 mar-50">
+    				<div class="footer-title">
+    					<h1 class="red"><u>NEWSLETTER</u></h1>
+    				</div><!-- /footer-title -->
+    				<P>Keep me up to date with content, updates and offers from <b>blimey!...</b></P>
+
+                    <form method="post">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Enter your email">
+                            <span class="input-group-btn">
+                            <button class="btn btn-theme" type="submit"><i class="fa fa-send"></i></button>
+                            </span>
+                        </div>
+                    </form>
+
+    				<div class="social text-center">
+    					<ul>
+    						<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+    						<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+    						<li><a href="#"><i class="fa fa-instagram"></i></a></li>
+    						<li><a href="#"><i class="fa fa-tumblr"></i></a></li>
+    						<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+    						<li><a href="#"><i class="fa fa-behance"></i></a></li>
+    						<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+    					</ul>
+    				</div><!-- /social -->
+    			</div>
+    		</div><!-- /row -->
+
+    		<div class="copyright">
+                <p>&copy; 2018 Blimey!. All Rights Reserved.
+                    <span class="pull-right">Created By <a href="https://themefores.net/user/everesttheme"><strong>EverestTheme</strong></a></span>
+                </p>
+    		</div><!-- /copyright -->
+    	</div><!-- /container -->
+    </footer><!-- /footer -->
+
+    <!-- <div class="ColorSwitcher">
+        <div class="ColorSwitcher__switchs">
+            <button class="ColorSwitcher__switch switch-red" title="Switch to Default" data-index="0"></button>
+            <button class="ColorSwitcher__switch switch-green" title="Switch to Green" data-index="2"></button>
+            <button class="ColorSwitcher__switch switch-blue" title="Switch to Blue" data-index="3" style=""></button>
+            <button class="ColorSwitcher__switch switch-magenta" title="Switch to Magenta" data-index="4" style=""></button>
+        </div>
+    </div> --><!-- /ColorSwitcher-->
+
+    <a href="#" class="back-to-top"><img src="img/top.png" alt=""></a>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/color-switcher.js"></script>
+    <script src="js/active.js"></script>
+    <script src="js/lightbox.js"></script>
+    <script src="js/jquery.counterup.min.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/jquery.countTo.js"></script>
+
+    <script>
+        // var colorSheets = [
+        //     {
+        //         color: "#cb1627",
+        //         title: "Switch to Default",
+        //         href: "./css/colors/color-default.css"
+        //     },
+        //     {
+        //         color: "#2fcc3d",
+        //         title: "Switch to Green",
+        //         href: "./css/colors/color-green.css"
+        //     },
+        //     {
+        //         color: "#2daccc",
+        //         title: "Switch to Blue",
+        //         href: "./css/colors/color-blue.css"
+        //     },
+        //     {
+        //         color: "#ff4800",
+        //         title: "Switch to Magenta",
+        //         href: "./css/colors/color-magenta.css"
+        //     }
+        // ];
+
+        // ColorSwitcher.init(colorSheets);
+
+        $('.timer').countTo();
+    </script>
+</body>
 </html>
