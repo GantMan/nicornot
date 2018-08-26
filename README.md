@@ -1,26 +1,32 @@
-## Getting Chrome Driver (Mac)
+# Nic Or Not
+Please forgive the mess!
+
+Here's the code for gathering the data for the NicOrNot model.
+
+## Gathering images
+
+#### Getting Chrome Driver (Mac)
 `brew tap homebrew/cask`
 `brew cask install chromedriver`
 `which chromedriver`
 
-## Running image grabber
+#### Running image grabber
 via https://github.com/hardikvasa/google-images-download
 `googleimagesdownload -cf cage_grabs.json`
 
 Afraid of just crazy people?  Add Chad Kroeger!
 
-### Remove dupes
+#### Remove dupes
 https://macpaw.com/gemini (caught 1)
 
-## Go through data manually and delete from positives
+#### Go through data manually and delete from positives
 Deleting positives: OMG LOL - GF walked by while doing this...
 Deleting negatives:  finding nic cage here, too
 
-## Move 20% of the data to Test
+#### Move 20% of the data to Test
 Create `Testing Data` with `nic` and `not` folders with 20% of the finalized data.
 
-
-# JUST FACES?
+### JUST FACES? - Parse through image data and just gather faces
 Install the needed face recognition library:
 ```shell
 $ pip install face_recognition
@@ -34,10 +40,23 @@ $ ./faceoff.sh
 If it fails on an image, delete the source image.  Then when it is 100% successful, all faces will be stored to `nicornotfaces` folders as JPGs; go through the resulting files and delete false positives for nic.
 
 
-### Install Coremltools
+## Convert `.cafe` to CoreML `mlmodel`
+
+#### Install Coremltools
 For running `convert.py` make sure you have 'coremltools' installed first.
 
 ```
 $ pip install -U coremltools --user
 ```
 
+#### Then convert and downsize
+
+Convert file to new type
+```
+$ python convert.py
+```
+
+Cut file size in half - quantize model weights
+```
+$ python downsize.py
+```
