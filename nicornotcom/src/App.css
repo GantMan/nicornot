@@ -1,0 +1,62 @@
+a {
+  color: #027abb;
+}
+
+#footer {
+  position:absolute;
+  bottom:0;
+  width:100%;
+  height:60px;   /* Height of the footer */
+  background:#027abb;
+}
+
+#footer ul li{
+  display: inline;
+  padding: 0 40px;
+}
+
+#footer a {
+  color: #111;
+}
+
+.App {
+  text-align: center;
+}
+
+body {
+  margin:0;
+  padding:0;
+  height:90%;
+  background-color: #222;
+}
+
+.App-logo {
+  height: 600px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  padding: 40px;
+  font-size: 1.5em;
+  animation: App-logo-spin infinite 20s linear;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.linkStuff {
+  padding-top: 50px;
+  color: #02bbd7;
+}
