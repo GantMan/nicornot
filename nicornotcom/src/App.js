@@ -2,16 +2,22 @@ import React, { Component } from 'react'
 import logo from './NicOrNot.png'
 import './App.css'
 import * as tf from '@tensorflow/tfjs'
+import { loadFrozenModel } from '@tensorflow/tfjs-converter'
 
-let nicornot
+const MODEL_URL = 'tensorflowjs_model.pb';
+const WEIGHTS_URL = 'weights_manifest.json';
+
+// const model = await loadFrozenModel(MODEL_URL, WEIGHTS_URL);
+// const cat = document.getElementById('cat');
+// model.execute({input: tf.fromPixels(cat)});
+
 class App extends Component {
   state = {
-    classification: 'Loading'
-  }
+    classification: "Loading"
+  };
 
-  preprocces = async (img) => {
-    nicornot = await tf.loadModel('https://storage.googleapis.com/tfjs-models/tfjs/mobilenet_v1_0.25_224/model.json')
-    let tensor = tf.fromPixels(img).toFloat();
+  preprocces = img => {
+    const tensor = tf.fromPixels(img).toFloat();
 
     const offset = tf.scalar(127.5);
     // Normalize the image
@@ -19,25 +25,74 @@ class App extends Component {
 
     // We add a dimension to get a batch shape [1,224,224,3]
     // batched image
-    return normalized.expandDims(0)
-  }
+    return normalized.expandDims(0);
+  };
 
-  predict = (input) => {
+  preproccesNic = img => {
+    const tensor = tf.fromPixels(img).toFloat();
+
+    const offset = tf.scalar(127.5);
+    // Normalize the image
+    const normalized = tensor.sub(offset).div(offset);
+
+    // We add a dimension to get a batch shape [1,224,224,3]
+    // batched image
+    return normalized.expandDims(0);
+  };
+
+  predict = (input, model) => {
     // get prediction
-    let prediction = nicornot.predict(input)
+    const prediction = model.predict(input);
     // retrieve the highest probability class label idx
-    console.log(prediction.argMax().buffer().values)
-    return prediction.argMax().buffer().values[0]
+    return prediction.argMax(1).buffer().values[0];
+  };
+
+  loadMobileNet = async (img) => {
+      const mobilenet = await tf.loadModel(
+        "https://storage.googleapis.com/tfjs-models/tfjs/mobilenet_v1_0.25_224/model.json"
+      );
+      const cls = this.preprocces(img);
+      return this.predict(cls, mobilenet)
   }
 
-  async componentDidMount () {
+  loadNicNet = async (img) => {
+    let nicmodel
+    try {
+      nicmodel = await loadFrozenModel(MODEL_URL, WEIGHTS_URL);
+      // return nicmodel.execute({input: tf.fromPixels(img)});
+      const cls = this.preproccesNic(img);
+      return this.predict(cls, nicmodel)
+    } catch(e) {
+      window.alert('Totes got an error')
+      console.log(e)
+    }
+
+  }
+
+  componentDidMount() {
     let img = new Image();
-    img.crossOrigin = '*';
-    img.src = 'https://i.imgur.com/p2mewNT.jpg';
-    img.width = 224;
-    img.height = 224;
-    let classification = await this.preprocces(img)
-    this.setState({classification: this.predict(classification)})
+    img.crossOrigin = "*";
+    // img.width = 224;
+    // img.height = 224;
+    img.width = 227;
+    img.height = 227;
+    // img.src = "https://i.imgur.com/p2mewNT.jpg"; // not
+    // img.src = "https://i.imgur.com/BPLtsDR.jpg"; // not
+    // img.src = "https://i.imgur.com/IYNZ3UN.jpg" // not
+    // img.src = "https://i.imgur.com/fV7Sm6s.jpg" // nic
+    // img.src = "https://i.imgur.com/FQWxcKg.jpg" // nic
+    img.src = "https://i.imgur.com/5wJryHC.jpg" // nic
+    // img.src = "https://i.imgur.com/fUm1zSu.jpg" // not
+    // img.src = "https://i.imgur.com/rF6bW1F.jpg" // not
+    // img.src = "https://i.imgur.com/WWXVhFX.jpg" // not
+    // img.src = "https://i.imgur.com/qg4a4oU.jpg" // not
+
+
+    img.onload = async () => {
+      // const result = await this.loadMobileNet(img)
+      const result = await this.loadNicNet(img)
+      this.setState({ classification: result });
+    };
   }
 
   render() {
