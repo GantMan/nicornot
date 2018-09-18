@@ -4,12 +4,9 @@ import './App.css'
 import * as tf from '@tensorflow/tfjs'
 import { loadFrozenModel } from '@tensorflow/tfjs-converter'
 
+const OPTIONS = ['Nic', 'Not']
 const MODEL_URL = 'tensorflowjs_model.pb';
 const WEIGHTS_URL = 'weights_manifest.json';
-
-// const model = await loadFrozenModel(MODEL_URL, WEIGHTS_URL);
-// const cat = document.getElementById('cat');
-// model.execute({input: tf.fromPixels(cat)});
 
 class App extends Component {
   state = {
@@ -35,7 +32,7 @@ class App extends Component {
     // Normalize the image
     const normalized = tensor.sub(offset).div(offset);
 
-    // We add a dimension to get a batch shape [1,224,224,3]
+    // We add a dimension to get a batch shape [1,227,227,3]
     // batched image
     return normalized.expandDims(0);
   };
@@ -79,9 +76,9 @@ class App extends Component {
     // img.src = "https://i.imgur.com/p2mewNT.jpg"; // not
     // img.src = "https://i.imgur.com/BPLtsDR.jpg"; // not
     // img.src = "https://i.imgur.com/IYNZ3UN.jpg" // not
-    // img.src = "https://i.imgur.com/fV7Sm6s.jpg" // nic
+    img.src = "https://i.imgur.com/fV7Sm6s.jpg" // nic
     // img.src = "https://i.imgur.com/FQWxcKg.jpg" // nic
-    img.src = "https://i.imgur.com/5wJryHC.jpg" // nic
+    // img.src = "https://i.imgur.com/5wJryHC.jpg" // nic
     // img.src = "https://i.imgur.com/fUm1zSu.jpg" // not
     // img.src = "https://i.imgur.com/rF6bW1F.jpg" // not
     // img.src = "https://i.imgur.com/WWXVhFX.jpg" // not
@@ -91,7 +88,7 @@ class App extends Component {
     img.onload = async () => {
       // const result = await this.loadMobileNet(img)
       const result = await this.loadNicNet(img)
-      this.setState({ classification: result });
+      this.setState({ classification: OPTIONS[result] });
     };
   }
 
