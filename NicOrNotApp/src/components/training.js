@@ -9,6 +9,7 @@ import {
 } from 'react-native'
 
 const dark = '#222'
+const accent = '#66b7d8'
 const background = '#4576b9'
 const light = '#fff'
 const scale = 100
@@ -85,7 +86,7 @@ export default class App extends Component {
     const imageSource = this.nicPics()
     return (
       <View style={styles.midContainer}>
-        <View>
+        <View style={styles.imgRow}>
           <Animated.View style={[styles.orb, {
             opacity: this.animatedValuesIn[0],
             transform: [
@@ -96,22 +97,22 @@ export default class App extends Component {
             <Image style={styles.headshot} source={imageSource[0]} />
           </Animated.View>
           <Animated.View style={[styles.orb, {
-            opacity: this.animatedValuesIn[2],
-            transform: [
-              {scaleX: this.animatedValuesIn[2]}
-            ]
-          }]}>
-            <Image style={styles.headshot} source={imageSource[2]} />
-          </Animated.View>
-        </View>
-        <View>
-          <Animated.View style={[styles.orb, {
             opacity: this.animatedValuesIn[1],
             transform: [
               {scaleX: this.animatedValuesIn[1]}
             ]
           }]}>
             <Image style={styles.headshot} source={imageSource[1]} />
+          </Animated.View>
+        </View>
+        <View style={styles.imgRow}>
+          <Animated.View style={[styles.orb, {
+            opacity: this.animatedValuesIn[2],
+            transform: [
+              {scaleX: this.animatedValuesIn[2]}
+            ]
+          }]}>
+            <Image style={styles.headshot} source={imageSource[2]} />
           </Animated.View>
           <Animated.View style={[styles.orb, {
             opacity: this.animatedValuesIn[3],
@@ -165,6 +166,11 @@ const styles = StyleSheet.create({
     paddingBottom: 100,
     backgroundColor: dark
   },
+  imgRow: {
+    flexDirection: 'row',
+    justifyContent: "space-around",
+    width: '100%'
+  },
   regular: {
     textAlign: 'center',
     fontSize: 16,
@@ -174,7 +180,7 @@ const styles = StyleSheet.create({
     fontSize: 40,
     textAlign: 'center',
     margin: 10,
-    color: background,
+    color: accent,
     fontFamily: "ArialRoundedMTBold"
   },
   midContainer: {
@@ -185,7 +191,7 @@ const styles = StyleSheet.create({
     zIndex: 2
   },
   orb: {
-    backgroundColor: background,
+    backgroundColor: accent,
     borderWidth: 2,
     borderColor: light,
     width: scale,
