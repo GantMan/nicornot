@@ -2,8 +2,14 @@ import React, { Component } from 'react'
 import {
   StyleSheet,
   Text,
-  View
+  View,
+  Image
 } from 'react-native'
+
+const image1 = require('../images/headshots/not1.png')
+const image2 = require('../images/headshots/not2.png')
+const image3 = require('../images/headshots/nic.png')
+const image4 = require('../images/headshots/not3.png')
 
 export default class App extends Component {
   render() {
@@ -16,18 +22,18 @@ export default class App extends Component {
         <View style={styles.midContainer}>
           <View>
             <View style={styles.orb}>
-
+              <Image style={styles.headshot} source={image1} />
             </View>
             <View style={styles.orb}>
-
+              <Image style={styles.headshot} source={image2} />
             </View>
           </View>
           <View>
             <View style={styles.orb}>
-
+              <Image style={styles.headshot} source={image3} />
             </View>
             <View style={styles.orb}>
-
+              <Image style={styles.headshot} source={image4} />
             </View>
           </View>
 
@@ -73,7 +79,12 @@ const styles = StyleSheet.create({
     height: scale,
     borderRadius: scale/2,
     margin: scale/10,
+    overflow: "hidden",
     zIndex: 3
+  },
+  headshot: {
+    width: scale,
+    height: scale
   },
   bar: {
     marginTop: -1.75 * scale,
