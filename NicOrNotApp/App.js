@@ -3,8 +3,7 @@ import Training from './src/components/training'
 import {
   StyleSheet,
   Text,
-  View,
-  Modal
+  View
 } from 'react-native'
 
 
@@ -18,12 +17,7 @@ export default class App extends Component {
           <Text style={styles.instructions}>
             To get started, edit App.js
           </Text>
-          <Modal
-            animationType="fade"
-            visible
-          >
-            <Training />
-          </Modal>
+          <Training active={true}/>
         </View>
     )
   }
