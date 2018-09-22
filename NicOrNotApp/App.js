@@ -21,8 +21,6 @@ export default class App extends Component {
           <Modal
             animationType="fade"
             visible
-            transparent
-
           >
             <Training />
           </Modal>
