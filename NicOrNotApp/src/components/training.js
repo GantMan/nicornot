@@ -7,7 +7,7 @@ import {
   Animated,
   Easing,
   Modal,
-  TouchableOpacity
+  TouchableHighlight
 } from 'react-native'
 import { shuffleArray } from '../lib/shuffle'
 import { metrics, colors, notNicImages } from '../theme'
@@ -91,7 +91,6 @@ export default class App extends Component {
   }
 
   renderSingleOrb = (idx, img) =>
-    <TouchableOpacity key={`orb${idx}`} onPress={() => this.picClick(idx)}>
       <Animated.View style={[styles.orb, {
         opacity: this.animatedValuesIn[idx],
         transform: [
@@ -100,10 +99,16 @@ export default class App extends Component {
           {rotate: this.spin}
         ]
       }]}>
-        <Image style={styles.headshot} source={img} />
+        <TouchableHighlight
+          key={`orb${idx}`}
+          activeOpacity={0.5}
+          underlayColor={light}
+          onPress={() => this.picClick(idx)}
+        >
+          <Image style={styles.headshot} source={img} />
+        </TouchableHighlight>
       </Animated.View>
 
-    </TouchableOpacity>
 
   renderOrbs = () => {
     const imageSource = this.nicPics()
