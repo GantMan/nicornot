@@ -2,7 +2,7 @@ export const metrics = {
   scale: 100,
   duration: 1000,
   delayGap: 700,
-  trainingTime: 5000
+  trainingTime: 6000
 }
 export const notNicImages = [
   require('../images/headshots/not1.png'),

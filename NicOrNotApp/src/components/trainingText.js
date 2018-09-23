@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { StyleSheet, View, Animated, Easing } from 'react-native'
 import { colors } from '../theme'
-const message = 'TRAINING...'
+const message = 'TRAINING MODEL...'
 export default class TrainingText extends Component {
   animatedValues = []
   constructor(props) {
@@ -18,7 +18,7 @@ export default class TrainingText extends Component {
   }
 
   animateSin = (val, index) => {
-    const duration = 1800
+    const duration = 1200
     // up n down
     return Animated.loop(
       Animated.timing(val, {
