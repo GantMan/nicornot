@@ -10,15 +10,19 @@ import {
   TouchableHighlight
 } from 'react-native'
 import { shuffleArray } from '../lib/shuffle'
+import TrainingText from './trainingText'
 import { metrics, colors, notNicImages } from '../theme'
 const { dark, accent, background, light } = colors
-const { scale, duration, delayGap } = metrics
+const { scale, duration, delayGap, trainingTime } = metrics
 const nicImg = require('../images/headshots/nic.png')
+const goodMessages = ['Find Nic 3 Times', '2 More', 'Last Time']
+const badMessages = [null, 'Really?', "C'mon!"]
 
-export default class App extends Component {
+export default class Training extends Component {
   state = {
-    correctCount: 0,
-    currentMessage: '',
+    active: true,
+    currentMessage: -1,
+    statusGood: true,
     quizPics: notNicImages
   }
   // do not use Array(4).fill(new Animated.Value(0)), it shares the instance
@@ -38,12 +42,21 @@ export default class App extends Component {
     this.newQuiz()
   }
 
-  newQuiz = () => {
+  newQuiz = (statusGood = true) => {
     this.setState(
-      {
-        quizPics: this.nicPics()
-      },
-      this.animateIn
+      (pState, _pProps) => ({
+        statusGood,
+        quizPics: this.nicPics(),
+        currentMessage: pState.currentMessage + 1
+      }),
+      () => {
+        if (this.state.currentMessage < goodMessages.length) {
+          this.animateIn()
+        } else {
+          // hide entire modal after 3 seconds
+          setTimeout(() => this.setState({ active: false }), trainingTime)
+        }
+      }
     )
   }
 
@@ -97,8 +110,8 @@ export default class App extends Component {
   }
 
   picClick = idx => {
-    // window.alert(idx)
-    this.animateOut(this.newQuiz)
+    const correct = this.state.quizPics[idx] === nicImg
+    this.animateOut(() => this.newQuiz(correct))
   }
 
   renderSingleOrb = idx => (
@@ -145,9 +158,32 @@ export default class App extends Component {
     return this.renderOrbs()
   }
 
+  renderBar = () => {
+    const { currentMessage } = this.state
+    if (currentMessage < goodMessages.length) {
+      const middleMessage = this.state.statusGood
+        ? goodMessages[currentMessage]
+        : badMessages[currentMessage]
+      return (
+        <View style={styles.bar}>
+          <Text style={styles.statusText}>{middleMessage}</Text>
+        </View>
+      )
+    } else {
+      return (
+        <View style={[styles.bar, { backgroundColor: light }]}>
+          <TrainingText />
+        </View>
+      )
+    }
+  }
+
   render() {
     return (
-      <Modal animationType="fade" visible={this.props.active}>
+      <Modal
+        animationType="fade"
+        visible={this.props.active && this.state.active}
+      >
         <View style={styles.trainingContainer}>
           <Text style={styles.regular}>
             Help us train our recognition model
@@ -155,7 +191,7 @@ export default class App extends Component {
           <Text style={styles.description}>Please Click on Nic</Text>
 
           {this.renderTest()}
-          <View style={styles.bar} />
+          {this.renderBar()}
         </View>
       </Modal>
     )
@@ -212,6 +248,12 @@ const styles = StyleSheet.create({
     marginTop: -1.75 * scale,
     backgroundColor: background,
     height: scale,
+    justifyContent: 'center',
+    alignItems: 'center',
     zIndex: 1
+  },
+  statusText: {
+    textAlign: 'center',
+    color: light
   }
 })

@@ -2,6 +2,7 @@ export const metrics = {
   scale: 100,
   duration: 1000,
   delayGap: 700,
+  trainingTime: 5000
 }
 export const notNicImages = [
   require('../images/headshots/not1.png'),
@@ -18,12 +19,12 @@ export const notNicImages = [
   require('../images/headshots/not12.png'),
   require('../images/headshots/not13.png'),
   require('../images/headshots/not14.png'),
-  require('../images/headshots/not15.png'),
+  require('../images/headshots/not15.png')
 ]
 
 export const colors = {
   dark: '#222',
   accent: '#66b7d8',
   background: '#4576b9',
-  light: '#fff',
+  light: '#fff'
 }
