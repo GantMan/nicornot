@@ -18,25 +18,39 @@ const nicImg = require('../images/headshots/nic.png')
 export default class App extends Component {
   state = {
     correctCount: 0,
-    currentMessage: ''
+    currentMessage: '',
+    quizPics: notNicImages
   }
   // do not use Array(4).fill(new Animated.Value(0)), it shares the instance
-  animatedValuesIn = [new Animated.Value(0), new Animated.Value(0), new Animated.Value(0), new Animated.Value(0)]
+  animatedValuesIn = [
+    new Animated.Value(0),
+    new Animated.Value(0),
+    new Animated.Value(0),
+    new Animated.Value(0)
+  ]
   animatedValuesOut = [new Animated.Value(1)]
   spin = this.animatedValuesOut[0].interpolate({
     inputRange: [0, 1],
     outputRange: ['0deg', '720deg']
   })
 
-  componentDidMount () {
-    this.animateIn()
+  componentDidMount() {
+    this.newQuiz()
+  }
+
+  newQuiz = () => {
+    this.setState(
+      {
+        quizPics: this.nicPics()
+      },
+      this.animateIn
+    )
   }
 
   animateIn = () => {
     this.animatedValuesOut[0].setValue(1) // reset spin-out
-    const animations = this.animatedValuesIn.map(val => Animated.spring(
-      val,
-      {
+    const animations = this.animatedValuesIn.map(val =>
+      Animated.spring(val, {
         speed: 2,
         toValue: 1,
         bounciness: 12,
@@ -47,10 +61,9 @@ export default class App extends Component {
     Animated.stagger(delayGap, animations).start()
   }
 
-  animateOut = (callback) => {
-    this.animatedValuesIn.map(val => Animated.timing(
-      val,
-      {
+  animateOut = callback => {
+    this.animatedValuesIn.map(val =>
+      Animated.timing(val, {
         toValue: 0,
         duration,
         easing: Easing.cubic,
@@ -58,23 +71,21 @@ export default class App extends Component {
       }).start()
     )
 
-    Animated.timing(
-      this.animatedValuesOut[0],
-      {
-        toValue: 0,
-        duration,
-        easing: Easing.cubic,
-        useNativeDriver: true
-      }).start(callback)
+    Animated.timing(this.animatedValuesOut[0], {
+      toValue: 0,
+      duration,
+      easing: Easing.cubic,
+      useNativeDriver: true
+    }).start(callback)
   }
 
   // 3 random pics and 1 nic
   nicPics = () => {
     let pics = []
-    while(pics.length < 3){
-        const rando = Math.floor(Math.random()*notNicImages.length)
-        if(pics.indexOf(rando) > -1) continue
-        pics[pics.length] = rando
+    while (pics.length < 3) {
+      const rando = Math.floor(Math.random() * notNicImages.length)
+      if (pics.indexOf(rando) > -1) continue
+      pics[pics.length] = rando
     }
 
     return shuffleArray([
@@ -85,42 +96,46 @@ export default class App extends Component {
     ])
   }
 
-  picClick = (idx) => {
+  picClick = idx => {
     // window.alert(idx)
-    this.animateOut(this.animateIn)
+    this.animateOut(this.newQuiz)
   }
 
-  renderSingleOrb = (idx, img) =>
-      <Animated.View style={[styles.orb, {
-        opacity: this.animatedValuesIn[idx],
-        transform: [
-          {scaleX: this.animatedValuesIn[idx]},
-          {scaleY: this.animatedValuesOut[0]},
-          {rotate: this.spin}
-        ]
-      }]}>
-        <TouchableHighlight
-          key={`orb${idx}`}
-          activeOpacity={0.5}
-          underlayColor={light}
-          onPress={() => this.picClick(idx)}
-        >
-          <Image style={styles.headshot} source={img} />
-        </TouchableHighlight>
-      </Animated.View>
-
+  renderSingleOrb = idx => (
+    <Animated.View
+      style={[
+        styles.orb,
+        {
+          opacity: this.animatedValuesIn[idx],
+          transform: [
+            { scaleX: this.animatedValuesIn[idx] },
+            { scaleY: this.animatedValuesOut[0] },
+            { rotate: this.spin }
+          ]
+        }
+      ]}
+    >
+      <TouchableHighlight
+        key={`orb${idx}`}
+        activeOpacity={0.5}
+        underlayColor={light}
+        onPress={() => this.picClick(idx)}
+      >
+        <Image style={styles.headshot} source={this.state.quizPics[idx]} />
+      </TouchableHighlight>
+    </Animated.View>
+  )
 
   renderOrbs = () => {
-    const imageSource = this.nicPics()
     return (
       <View style={styles.midContainer}>
         <View style={styles.imgRow}>
-          {this.renderSingleOrb(0, imageSource[0])}
-          {this.renderSingleOrb(1, imageSource[1])}
+          {this.renderSingleOrb(0)}
+          {this.renderSingleOrb(1)}
         </View>
         <View style={styles.imgRow}>
-          {this.renderSingleOrb(2, imageSource[2])}
-          {this.renderSingleOrb(3, imageSource[3])}
+          {this.renderSingleOrb(2)}
+          {this.renderSingleOrb(3)}
         </View>
       </View>
     )
@@ -132,17 +147,12 @@ export default class App extends Component {
 
   render() {
     return (
-      <Modal
-        animationType="fade"
-        visible={this.props.active}
-      >
+      <Modal animationType="fade" visible={this.props.active}>
         <View style={styles.trainingContainer}>
           <Text style={styles.regular}>
             Help us train our recognition model
           </Text>
-          <Text style={styles.description}>
-            Please Click on Nic
-          </Text>
+          <Text style={styles.description}>Please Click on Nic</Text>
 
           {this.renderTest()}
           <View style={styles.bar} />
@@ -161,7 +171,7 @@ const styles = StyleSheet.create({
   },
   imgRow: {
     flexDirection: 'row',
-    justifyContent: "space-around",
+    justifyContent: 'space-around',
     width: '100%'
   },
   regular: {
@@ -174,13 +184,13 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     margin: 10,
     color: accent,
-    fontFamily: "ArialRoundedMTBold"
+    fontFamily: 'ArialRoundedMTBold'
   },
   midContainer: {
     minHeight: scale,
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "space-around",
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
     zIndex: 2
   },
   orb: {
@@ -189,9 +199,9 @@ const styles = StyleSheet.create({
     borderColor: light,
     width: scale,
     height: scale,
-    borderRadius: scale/2,
-    margin: scale/10,
-    overflow: "hidden",
+    borderRadius: scale / 2,
+    margin: scale / 10,
+    overflow: 'hidden',
     zIndex: 3
   },
   headshot: {
