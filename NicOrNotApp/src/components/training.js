@@ -183,7 +183,7 @@ export default class Training extends Component {
   render() {
     return (
       <Modal
-        animationType="fade"
+        animationType="slide"
         visible={this.props.active && this.state.active}
       >
         <View style={styles.trainingContainer}>
