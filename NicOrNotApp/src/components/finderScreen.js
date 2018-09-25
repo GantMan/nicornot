@@ -1,9 +1,16 @@
 import React, { Component } from 'react'
 import Training from './training'
-import { StyleSheet, Text, View, StatusBar, Image } from 'react-native'
+import {
+  StyleSheet,
+  View,
+  StatusBar,
+  Image,
+  TouchableHighlight
+} from 'react-native'
 import { colors } from '../theme'
 
 const logo = require('../images/non.png')
+const flipIcon = require('../images/flip.png')
 export default class App extends Component {
   render() {
     return (
@@ -11,8 +18,14 @@ export default class App extends Component {
         <StatusBar barStyle="light-content" />
         <View style={styles.camera} />
         <Image source={logo} style={styles.header} />
-        <Text style={styles.cameraBlock}>Flip Camera</Text>
-        <Training active={false} />
+        <TouchableHighlight
+          onPress={() => alert('hi')}
+          underlayColor={colors.light}
+          style={styles.cameraBlock}
+        >
+          <Image style={styles.flipIcon} source={flipIcon} />
+        </TouchableHighlight>
+        <Training active={true} />
       </View>
     )
   }
@@ -40,9 +53,10 @@ const styles = StyleSheet.create({
   cameraBlock: {
     width: '100%',
     padding: 15,
-    fontSize: 20,
-    textAlign: 'center',
-    backgroundColor: colors.background,
-    color: colors.light
+    backgroundColor: colors.background
+  },
+  flipIcon: {
+    resizeMode: 'contain',
+    height: 30
   }
 })

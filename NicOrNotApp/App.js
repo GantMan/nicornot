@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Image } from 'react-native'
+import { Image, StyleSheet } from 'react-native'
 import { createBottomTabNavigator } from 'react-navigation'
 import FinderScreen from './src/components/finderScreen'
 import SettingsScreen from './src/components/settingsScreen'
@@ -10,6 +10,7 @@ YellowBox.ignoreWarnings([
   'Module RCTImageLoader'
 ])
 
+const sharedStyles = {}
 export default createBottomTabNavigator(
   {
     Finder: FinderScreen,
@@ -19,16 +20,22 @@ export default createBottomTabNavigator(
     navigationOptions: ({ navigation }) => ({
       tabBarIcon: ({ focused, tintColor }) => {
         const { routeName } = navigation.state
-        let icon
+        const opacity = focused ? 1 : 0.5
         if (routeName === 'Finder') {
-          icon = require('./src/images/find.png')
-        } else if (routeName === 'Settings') {
-          icon = require('./src/images/settings.png')
+          return (
+            <Image
+              source={require('./src/images/find.png')}
+              style={[styles.tabButton, { opacity }]}
+            />
+          )
+        } else {
+          return (
+            <Image
+              source={require('./src/images/settings.png')}
+              style={[styles.tabButton, { opacity }]}
+            />
+          )
         }
-
-        return (
-          <Image source={icon} style={{ height: 40, resizeMode: 'contain' }} />
-        )
       }
     }),
     tabBarOptions: {
@@ -39,3 +46,10 @@ export default createBottomTabNavigator(
     }
   }
 )
+
+const styles = StyleSheet.create({
+  tabButton: {
+    height: 40,
+    resizeMode: 'contain'
+  }
+})
