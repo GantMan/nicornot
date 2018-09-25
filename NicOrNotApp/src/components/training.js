@@ -55,6 +55,7 @@ export default class Training extends Component {
         } else {
           // hide entire modal after 3 seconds
           setTimeout(() => {
+            this.props.onComplete()
             this.setState({ active: false })
           }, trainingTime)
         }

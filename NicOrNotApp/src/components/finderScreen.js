@@ -5,13 +5,33 @@ import {
   View,
   StatusBar,
   Image,
-  TouchableHighlight
+  TouchableHighlight,
+  AsyncStorage
 } from 'react-native'
 import { colors } from '../theme'
+
+// Emulate a fresh machine by removing intro key
+// AsyncStorage.removeItem('showIntro')
 
 const logo = require('../images/non.png')
 const flipIcon = require('../images/flip.png')
 export default class App extends Component {
+  state = {
+    showIntro: false
+  }
+
+  async componentDidMount() {
+    const storageResult = await AsyncStorage.getItem('showIntro')
+    const showIntro = storageResult === null ? true : JSON.parse(storageResult)
+    this.setState({ showIntro })
+  }
+
+  introDone = async () => {
+    await AsyncStorage.setItem('showIntro', 'false')
+    const showIntro = JSON.parse(await AsyncStorage.getItem('showIntro'))
+    this.setState({ showIntro: false })
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -25,7 +45,7 @@ export default class App extends Component {
         >
           <Image style={styles.flipIcon} source={flipIcon} />
         </TouchableHighlight>
-        <Training active={true} />
+        <Training active={this.state.showIntro} onComplete={this.introDone} />
       </View>
     )
   }
