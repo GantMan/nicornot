@@ -1,47 +1,55 @@
 import React, { Component } from 'react'
-import Training from './src/components/training'
-import {
-  StyleSheet,
-  Text,
-  View
-} from 'react-native'
+import { Image, StyleSheet } from 'react-native'
+import { createBottomTabNavigator } from 'react-navigation'
+import FinderScreen from './src/components/finderScreen'
+import SettingsScreen from './src/components/settingsScreen'
+import { colors } from './src/theme'
+import { YellowBox } from 'react-native'
+YellowBox.ignoreWarnings([
+  'Warning: isMounted(...) is deprecated',
+  'Module RCTImageLoader'
+])
 
-
-export default class App extends Component {
-  render() {
-    return (
-        <View style={styles.container}>
-          <Text style={styles.welcome}>
-            Welcome to React Native!
-          </Text>
-          <Text style={styles.instructions}>
-            To get started, edit App.js
-          </Text>
-          <Training active={true}/>
-        </View>
-    )
+const sharedStyles = {}
+export default createBottomTabNavigator(
+  {
+    Finder: FinderScreen,
+    Settings: SettingsScreen
+  },
+  {
+    navigationOptions: ({ navigation }) => ({
+      tabBarIcon: ({ focused, tintColor }) => {
+        const { routeName } = navigation.state
+        const opacity = focused ? 1 : 0.5
+        if (routeName === 'Finder') {
+          return (
+            <Image
+              source={require('./src/images/find.png')}
+              style={[styles.tabButton, { opacity }]}
+            />
+          )
+        } else {
+          return (
+            <Image
+              source={require('./src/images/settings.png')}
+              style={[styles.tabButton, { opacity }]}
+            />
+          )
+        }
+      }
+    }),
+    tabBarOptions: {
+      style: {
+        backgroundColor: colors.background
+      },
+      showLabel: false
+    }
   }
-}
-
-const dark = '#222'
-const background = '#4576b9'
-const light = '#fff'
+)
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#222',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: light,
-    marginBottom: 5,
-  },
-});
+  tabButton: {
+    height: 40,
+    resizeMode: 'contain'
+  }
+})
