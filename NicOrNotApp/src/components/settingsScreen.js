@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   ScrollView
 } from 'react-native'
+import { SocialButton } from '../components/social-button'
 import { colors } from '../theme'
 
 export default class App extends Component {
@@ -24,31 +25,56 @@ export default class App extends Component {
           <Text style={[styles.us, { color: colors.ir }]}>
             We are Infinite Red.
           </Text>
+          <View style={styles.social}>
+            <SocialButton preset="website" link={'https://infinite.red'} />
+            <SocialButton
+              preset="twitter"
+              link={'https://twitter.com/infinite_red'}
+            />
+            <SocialButton
+              preset="github"
+              link={'https://github.com/infinitered'}
+            />
+            <SocialButton preset="medium" link={'https://shift.infinite.red'} />
+            <SocialButton
+              preset="dribbble"
+              link={'https://dribbble.com/infinitered'}
+            />
+            <SocialButton
+              preset="instagram"
+              link={'https://instagram.com/infinitered_designers'}
+            />
+            <SocialButton
+              preset="facebook"
+              link={'https://facebook.com/infiniteredinc'}
+            />
+          </View>
           <Text style={styles.paragraph}>
-            We solve deeply complicated tasks in a way that makes them
+            We solve deeply complicated tasks in a way that make them
             approachable and fun. Want to write mobile apps and cool websites?
             We provide consulting and training.
           </Text>
-          <View style={styles.social}>
-            <Text style={styles.socialItem}>Twitter</Text>
-            <Text style={styles.socialItem}>Medium</Text>
-          </View>
           <Text style={styles.paragraph}>
-            Specifically coded by Gant Laborde and help from Frank von Hoven and
-            Ray Deck.
+            Specifically coded by <Text style={styles.link}>Gant Laborde </Text>
+            and help from
+            <Text style={styles.link}> Frank von Hoven</Text> and
+            <Text style={styles.link}> Ray Deck</Text>.
           </Text>
 
           <Text style={styles.header}>Settings</Text>
           <Text style={styles.paragraph}>
-            Use your own CoreML model on faces:
+            Use your own CoreML model on faces.
           </Text>
           <TextInput
             style={styles.inputModel}
             placeholder="Full URL to your CoreML model"
           />
-          <TouchableOpacity>
-            <Text>Train Model Again</Text>
-          </TouchableOpacity>
+          <View style={styles.social}>
+            <TouchableOpacity style={styles.pressy}>
+              <Text style={styles.paragraph}>Fetch and Compile</Text>
+            </TouchableOpacity>
+            <Text>{}</Text>
+          </View>
         </ScrollView>
       </SafeAreaView>
     )
@@ -57,14 +83,17 @@ export default class App extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: colors.dark
   },
+  link: {
+    color: colors.accent
+  },
   social: {
     flexDirection: 'row',
-    justifyContent: 'space-around'
+    justifyContent: 'space-around',
+    marginVertical: 15
   },
   socialItem: {
     color: colors.accent
@@ -73,7 +102,8 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     color: colors.ir,
-    textAlign: 'center'
+    textAlign: 'center',
+    marginTop: 10
   },
   paragraph: {
     color: colors.light,
@@ -84,7 +114,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.light,
     height: 40,
     padding: 10,
-    margin: 10
+    margin: 5
   },
   header: {
     fontSize: 20,
@@ -92,6 +122,9 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: colors.light,
     margin: 10,
-    paddingTop: 30
+    paddingTop: 10
+  },
+  pressy: {
+    backgroundColor: colors.accent
   }
 })
