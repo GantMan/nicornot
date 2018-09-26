@@ -13,8 +13,8 @@ YellowBox.ignoreWarnings([
 const sharedStyles = {}
 export default createBottomTabNavigator(
   {
-    Settings: SettingsScreen,
-    Finder: FinderScreen
+    Finder: FinderScreen,
+    Settings: SettingsScreen
   },
   {
     navigationOptions: ({ navigation }) => ({
