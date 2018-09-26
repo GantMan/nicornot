@@ -10,7 +10,7 @@ import {
 } from 'react-native'
 import { colors } from '../theme'
 
-// Emulate a fresh machine by removing intro key
+// Emulate a fresh machine by removing showIntro key
 // AsyncStorage.removeItem('showIntro')
 
 const logo = require('../images/non.png')

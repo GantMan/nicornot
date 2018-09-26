@@ -20,7 +20,6 @@ const badMessages = [null, 'Really?', "C'mon!"]
 
 export default class Training extends Component {
   state = {
-    active: true,
     currentMessage: -1,
     statusGood: true,
     quizPics: notNicImages
@@ -56,7 +55,6 @@ export default class Training extends Component {
           // hide entire modal after 3 seconds
           setTimeout(() => {
             this.props.onComplete()
-            this.setState({ active: false })
           }, trainingTime)
         }
       }
@@ -183,10 +181,7 @@ export default class Training extends Component {
 
   render() {
     return (
-      <Modal
-        animationType="slide"
-        visible={this.props.active && this.state.active}
-      >
+      <Modal animationType="slide" visible={this.props.active}>
         <View style={styles.trainingContainer}>
           <Text style={styles.regular}>
             Help us train our recognition model
