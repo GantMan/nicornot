@@ -26,5 +26,6 @@ export const colors = {
   dark: '#222',
   accent: '#66b7d8',
   background: '#4576b9',
-  light: '#fff'
+  light: '#fff',
+  ir: '#e73536'
 }
