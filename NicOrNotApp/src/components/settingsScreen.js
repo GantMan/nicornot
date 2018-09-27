@@ -6,10 +6,12 @@ import {
   View,
   SafeAreaView,
   TouchableOpacity,
-  Image
+  Image,
+  AsyncStorage
 } from 'react-native'
 import { SocialButton } from '../components/social-button'
 import { colors } from '../theme'
+import fetchModel from '../lib/fetchModel'
 import Accordion from 'react-native-collapsible/Accordion'
 const logo = require('../images/NicOrNot.png')
 
@@ -21,6 +23,14 @@ export default class App extends Component {
 
   renderHeader = section => {
     return <Text style={styles.header}>{section}</Text>
+  }
+
+  setModel = () => {
+    window.alert('set model')
+  }
+
+  resetNic = () => {
+    window.alert('reset nic')
   }
 
   renderSettings = () => (
@@ -35,10 +45,10 @@ export default class App extends Component {
         placeholder="Class string to match"
       />
       <View style={styles.buttonRow}>
-        <TouchableOpacity style={styles.pressy}>
+        <TouchableOpacity style={styles.pressy} onPress={this.setModel}>
           <Text style={styles.paragraph}>Fetch</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.reset}>
+        <TouchableOpacity style={styles.reset} onPress={this.resetNic}>
           <Text style={styles.paragraph}>Reset to Nic</Text>
         </TouchableOpacity>
         <Text style={styles.paragraph}>{this.state.statusMessage}</Text>

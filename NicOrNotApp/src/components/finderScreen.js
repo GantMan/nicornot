@@ -9,15 +9,20 @@ import {
   AsyncStorage
 } from 'react-native'
 import { colors } from '../theme'
+import { RNVCameraView, FacesProvider, Faces } from 'react-native-vision'
+import { Identifier } from 'react-native-identifier'
 
-// Emulate a fresh machine by removing showIntro key
+// Emulate a fresh device by removing showIntro key
 // AsyncStorage.removeItem('showIntro')
 
 const logo = require('../images/non.png')
 const flipIcon = require('../images/flip.png')
 export default class App extends Component {
   state = {
-    showIntro: false
+    showIntro: false,
+    classifier: null,
+    successFace: 'nic',
+    modelPath: ''
   }
 
   async componentDidMount() {
@@ -36,16 +41,36 @@ export default class App extends Component {
     return (
       <View style={styles.container}>
         <StatusBar barStyle="light-content" />
-        <View style={styles.camera} />
-        <Image source={logo} style={styles.header} />
-        <TouchableHighlight
-          onPress={() => alert('hi')}
-          underlayColor={colors.light}
-          style={styles.cameraBlock}
-        >
-          <Image style={styles.flipIcon} source={flipIcon} />
-        </TouchableHighlight>
+        <FacesProvider
+          isCameraFront={false}
+          classifier={this.state.classifier}
+        />
+        <RNVCameraView gravity="fill" style={styles.camera}>
+          <Image source={logo} style={styles.header} />
+          <Faces>
+            {({ face, style, faceConfidence, key }) => {
+              return (
+                <Identifier
+                  key={key}
+                  style={style}
+                  horizontal
+                  accuracy={
+                    face === this.state.successFace ? faceConfidence : 0
+                  }
+                />
+              )
+            }}
+          </Faces>
+          <TouchableHighlight
+            onPress={() => alert('hi')}
+            underlayColor={colors.light}
+            style={styles.cameraBlock}
+          >
+            <Image style={styles.flipIcon} source={flipIcon} />
+          </TouchableHighlight>
+        </RNVCameraView>
         <Training active={this.state.showIntro} onComplete={this.introDone} />
+        <FacesProvider />
       </View>
     )
   }
@@ -62,7 +87,8 @@ const styles = StyleSheet.create({
     position: 'absolute',
     width: '80%',
     resizeMode: 'contain',
-    top: -25
+    top: -25,
+    alignSelf: 'center'
   },
   camera: {
     flex: 1,

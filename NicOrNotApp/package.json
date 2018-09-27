@@ -9,7 +9,13 @@
   "dependencies": {
     "react": "16.3.1",
     "react-native": "0.55.4",
+    "react-native-camera-ios-enable": "^1.0.1",
     "react-native-collapsible": "^1.0.0",
+    "react-native-coreml": "^1.2.0",
+    "react-native-fs": "^2.11.16",
+    "react-native-identifier": "^0.4.5",
+    "react-native-swift": "^1.2.1",
+    "react-native-vision": "rhdeck/react-native-vision",
     "react-navigation": "^2.16.0"
   },
   "devDependencies": {
@@ -21,5 +27,6 @@
   },
   "jest": {
     "preset": "react-native"
-  }
+  },
+  "isSwift": true
 }
