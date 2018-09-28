@@ -22,7 +22,8 @@ export default class App extends Component {
     showIntro: false,
     classifier: null,
     successFace: 'nic',
-    modelPath: ''
+    modelPath: '',
+    cameraFront: false
   }
 
   async componentDidMount() {
@@ -33,8 +34,11 @@ export default class App extends Component {
 
   introDone = async () => {
     await AsyncStorage.setItem('showIntro', 'false')
-    const showIntro = JSON.parse(await AsyncStorage.getItem('showIntro'))
     this.setState({ showIntro: false })
+  }
+
+  flipCam = () => {
+    this.setState((pState) => ({cameraFront: !pState.cameraFront}))
   }
 
   render() {
@@ -42,7 +46,7 @@ export default class App extends Component {
       <View style={styles.container}>
         <StatusBar barStyle="light-content" />
         <FacesProvider
-          isCameraFront={false}
+          isCameraFront={this.state.cameraFront}
           classifier={this.state.classifier}
         />
         <RNVCameraView gravity="fill" style={styles.camera}>
@@ -62,7 +66,7 @@ export default class App extends Component {
             }}
           </Faces>
           <TouchableHighlight
-            onPress={() => alert('hi')}
+            onPress={this.flipCam}
             underlayColor={colors.light}
             style={styles.cameraBlock}
           >
