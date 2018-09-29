@@ -9,9 +9,8 @@ const fetchModel = async (modelName, modelURL) => {
   }
   const toFile = RNFS.TemporaryDirectoryPath + ml
   if (!(await RNFS.exists(toFile))) {
-    const sourceURL = modelURL
     const { promise, _jobId } = RNFS.downloadFile({
-      fromUrl: sourceURL,
+      fromUrl: modelURL,
       toFile: toFile
     })
     await promise

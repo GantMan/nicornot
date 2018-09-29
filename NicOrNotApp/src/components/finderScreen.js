@@ -38,7 +38,7 @@ export default class App extends Component {
   }
 
   flipCam = () => {
-    this.setState((pState) => ({cameraFront: !pState.cameraFront}))
+    this.setState(pState => ({ cameraFront: !pState.cameraFront }))
   }
 
   render() {
@@ -107,6 +107,7 @@ const styles = StyleSheet.create({
   },
   flipIcon: {
     resizeMode: 'contain',
-    height: 30
+    height: 30,
+    alignSelf: 'center'
   }
 })

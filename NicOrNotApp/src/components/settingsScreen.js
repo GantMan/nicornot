@@ -7,7 +7,8 @@ import {
   SafeAreaView,
   TouchableOpacity,
   Image,
-  AsyncStorage
+  AsyncStorage,
+  ScrollView
 } from 'react-native'
 import { SocialButton } from '../components/social-button'
 import { colors } from '../theme'
@@ -27,14 +28,22 @@ export default class App extends Component {
     return <Text style={styles.header}>{section}</Text>
   }
 
-  setModel = () => {
-    window.alert('set model')
-    this.setState({ modelURL: '', modelString: '' })
+  setModel = async () => {
+    await this.setState({
+      statusMessage: 'Fetching and Compiling'
+    })
+    await AsyncStorage.setItem('xModel', this.state.modelURL)
+    await AsyncStorage.setItem('xString', this.state.modelString)
   }
 
   resetNic = () => {
-    window.alert('reset nic')
-    this.setState({ modelURL: '', modelString: '' })
+    this.setState({
+      modelURL: '',
+      modelString: '',
+      statusMessage: 'Reset to Nic'
+    })
+    AsyncStorage.removeItem('xModel')
+    AsyncStorage.removeItem('xString')
   }
 
   setNewURL = value => this.setState({ modelURL: value })
@@ -62,13 +71,16 @@ export default class App extends Component {
         placeholder="Class string to match"
       />
       <View style={styles.buttonRow}>
-        <TouchableOpacity style={styles.pressy} onPress={this.setModel}>
+        <TouchableOpacity
+          style={styles.pressy}
+          onPress={async () => await this.setModel()}
+        >
           <Text style={styles.paragraph}>Fetch</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.reset} onPress={this.resetNic}>
           <Text style={styles.paragraph}>Reset to Nic</Text>
         </TouchableOpacity>
-        <Text style={styles.paragraph}>{this.state.statusMessage}</Text>
+        <Text style={styles.status}>{this.state.statusMessage}</Text>
       </View>
     </View>
   )
@@ -136,17 +148,22 @@ export default class App extends Component {
 
   render() {
     return (
-      <SafeAreaView style={styles.container}>
-        <Image source={logo} style={styles.logo} />
-        <Accordion
-          activeSections={this.state.activeSections}
-          sections={['Settings', 'About this App', 'About Us']}
-          touchableComponent={TouchableOpacity}
-          renderHeader={this.renderHeader}
-          renderContent={this.renderContent}
-          onChange={this.updateSections}
-        />
-      </SafeAreaView>
+      <ScrollView
+        style={styles.settingsContainer}
+        contentContainerStyle={styles.container}
+      >
+        <SafeAreaView style={styles.container}>
+          <Image source={logo} style={styles.logo} />
+          <Accordion
+            activeSections={this.state.activeSections}
+            sections={['Settings', 'About this App', 'About Us']}
+            touchableComponent={TouchableOpacity}
+            renderHeader={this.renderHeader}
+            renderContent={this.renderContent}
+            onChange={this.updateSections}
+          />
+        </SafeAreaView>
+      </ScrollView>
     )
   }
 }
@@ -156,6 +173,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: colors.dark
+  },
+  settingsContainer: {
     backgroundColor: colors.dark
   },
   logo: {
@@ -185,6 +205,12 @@ const styles = StyleSheet.create({
     color: colors.light,
     fontSize: 16,
     padding: 10
+  },
+  status: {
+    color: colors.accent,
+    fontSize: 15,
+    padding: 5,
+    paddingTop: 15
   },
   inputModel: {
     backgroundColor: colors.light,
