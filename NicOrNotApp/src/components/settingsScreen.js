@@ -24,16 +24,40 @@ export default class App extends Component {
     modelString: ''
   }
 
+  async componentDidMount() {
+    // Are we working with a stored model?
+    const modelURL = (await AsyncStorage.getItem('xURL')) || this.state.modelURL
+    const modelString =
+      (await AsyncStorage.getItem('xString')) || this.state.modelString
+    this.setState({ modelURL, modelString })
+  }
+
   renderHeader = section => {
     return <Text style={styles.header}>{section}</Text>
   }
 
   setModel = async () => {
-    await this.setState({
-      statusMessage: 'Fetching and Compiling'
-    })
-    await AsyncStorage.setItem('xModel', this.state.modelURL)
-    await AsyncStorage.setItem('xString', this.state.modelString)
+    const xURL = this.state.modelURL
+    const xString = this.state.modelString
+
+    if (xURL && xString) {
+      this.setState({
+        statusMessage: 'Fetching and Compiling'
+      })
+      try {
+        downloadedModel = await fetchModel(xURL)
+        await AsyncStorage.setItem('xURL', xURL)
+        await AsyncStorage.setItem('xModel', downloadedModel)
+        await AsyncStorage.setItem('xString', xString)
+        this.setState({ statusMessage: 'Done ✅' })
+      } catch (e) {
+        this.setState({ statusMessage: 'Failed' })
+      }
+    } else {
+      this.setState({
+        statusMessage: 'Missing info'
+      })
+    }
   }
 
   resetNic = () => {
@@ -42,6 +66,7 @@ export default class App extends Component {
       modelString: '',
       statusMessage: 'Reset to Nic'
     })
+    AsyncStorage.removeItem('xURL')
     AsyncStorage.removeItem('xModel')
     AsyncStorage.removeItem('xString')
   }
@@ -55,7 +80,6 @@ export default class App extends Component {
       <Text style={styles.paragraph}>Use your own CoreML model on faces.</Text>
       <TextInput
         style={styles.inputModel}
-        autoFocus
         autoCapitalize="none"
         autoCorrect={false}
         onChangeText={this.setNewURL}
@@ -149,6 +173,7 @@ export default class App extends Component {
   render() {
     return (
       <ScrollView
+        keyboardShouldPersistTaps="always"
         style={styles.settingsContainer}
         contentContainerStyle={styles.container}
       >

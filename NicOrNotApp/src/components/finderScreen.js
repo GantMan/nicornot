@@ -17,19 +17,45 @@ import { Identifier } from 'react-native-identifier'
 
 const logo = require('../images/non.png')
 const flipIcon = require('../images/flip.png')
+const defaultName = 'nic'
+const defaultModelPath = ''
 export default class App extends Component {
   state = {
     showIntro: false,
-    classifier: null,
-    successFace: 'nic',
-    modelPath: '',
+    classifier: defaultModelPath,
+    successFace: defaultName,
     cameraFront: false
   }
 
-  async componentDidMount() {
+  gotFocus = async () => {
+    // pull from device storage
+    const classifier =
+      (await AsyncStorage.getItem('xModel')) || defaultModelPath
+    const successFace = (await AsyncStorage.getItem('xString')) || defaultName
     const storageResult = await AsyncStorage.getItem('showIntro')
     const showIntro = storageResult === null ? true : JSON.parse(storageResult)
-    this.setState({ showIntro })
+    this.setState({ showIntro, classifier, successFace })
+  }
+
+  lostFocus = async () => {
+    // Possibly disable camera when not in use
+  }
+
+  componentDidMount() {
+    // Let's make some events
+    this.getFocusListener = this.props.navigation.addListener(
+      'didFocus',
+      this.gotFocus
+    )
+    this.loseFocusListener = this.props.navigation.addListener(
+      'didBlur',
+      this.lostFocus
+    )
+  }
+
+  componentWillUnmount() {
+    this.getFocusListener.remove()
+    this.loseFocusListener.remove()
   }
 
   introDone = async () => {
@@ -43,39 +69,39 @@ export default class App extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <StatusBar barStyle="light-content" />
-        <FacesProvider
-          isCameraFront={this.state.cameraFront}
-          classifier={this.state.classifier}
-        />
-        <RNVCameraView gravity="fill" style={styles.camera}>
-          <Image source={logo} style={styles.header} />
-          <Faces>
-            {({ face, style, faceConfidence, key }) => {
-              return (
-                <Identifier
-                  key={key}
-                  style={style}
-                  horizontal
-                  accuracy={
-                    face === this.state.successFace ? faceConfidence : 0
-                  }
-                />
-              )
-            }}
-          </Faces>
-          <TouchableHighlight
-            onPress={this.flipCam}
-            underlayColor={colors.light}
-            style={styles.cameraBlock}
-          >
-            <Image style={styles.flipIcon} source={flipIcon} />
-          </TouchableHighlight>
-        </RNVCameraView>
-        <Training active={this.state.showIntro} onComplete={this.introDone} />
-        <FacesProvider />
-      </View>
+      <FacesProvider
+        isCameraFront={this.state.cameraFront}
+        classifier={this.state.classifier}
+      >
+        <View style={styles.container}>
+          <StatusBar barStyle="light-content" />
+          <RNVCameraView gravity="fill" style={styles.camera}>
+            <Image source={logo} style={styles.header} />
+            <Faces>
+              {({ face, style, faceConfidence, key }) => {
+                return (
+                  <Identifier
+                    key={key}
+                    style={style}
+                    horizontal
+                    accuracy={
+                      face === this.state.successFace ? faceConfidence : 0
+                    }
+                  />
+                )
+              }}
+            </Faces>
+            <TouchableHighlight
+              onPress={this.flipCam}
+              underlayColor={colors.light}
+              style={styles.cameraBlock}
+            >
+              <Image style={styles.flipIcon} source={flipIcon} />
+            </TouchableHighlight>
+          </RNVCameraView>
+          <Training active={this.state.showIntro} onComplete={this.introDone} />
+        </View>
+      </FacesProvider>
     )
   }
 }

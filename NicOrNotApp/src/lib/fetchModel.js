@@ -1,6 +1,7 @@
 import RNFS from 'react-native-fs'
 import { compileModel } from 'react-native-coreml'
-const fetchModel = async (modelName, modelURL) => {
+const fetchModel = async modelURL => {
+  const modelName = modelURL.match(/([^\/]+)(?=\.\w+$)/)[0]
   const mlc = modelName + '.mlmodelc'
   const ml = modelName + '.mlmodel'
   const compiledPath = RNFS.DocumentDirectoryPath + '/' + mlc
