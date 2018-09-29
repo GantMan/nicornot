@@ -18,7 +18,9 @@ const logo = require('../images/NicOrNot.png')
 export default class App extends Component {
   state = {
     statusMessage: '',
-    activeSections: [0]
+    activeSections: [0],
+    modelURL: '',
+    modelString: ''
   }
 
   renderHeader = section => {
@@ -27,21 +29,36 @@ export default class App extends Component {
 
   setModel = () => {
     window.alert('set model')
+    this.setState({ modelURL: '', modelString: '' })
   }
 
   resetNic = () => {
     window.alert('reset nic')
+    this.setState({ modelURL: '', modelString: '' })
   }
+
+  setNewURL = value => this.setState({ modelURL: value })
+
+  setNewModelString = value => this.setState({ modelString: value })
 
   renderSettings = () => (
     <View>
       <Text style={styles.paragraph}>Use your own CoreML model on faces.</Text>
       <TextInput
         style={styles.inputModel}
+        autoFocus
+        autoCapitalize="none"
+        autoCorrect={false}
+        onChangeText={this.setNewURL}
+        value={this.state.modelURL}
         placeholder="Full URL to your CoreML model"
       />
       <TextInput
         style={styles.inputModel}
+        autoCapitalize="none"
+        autoCorrect={false}
+        onChangeText={this.setNewModelString}
+        value={this.state.modelString}
         placeholder="Class string to match"
       />
       <View style={styles.buttonRow}>
