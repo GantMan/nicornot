@@ -6,42 +6,105 @@ import {
   View,
   SafeAreaView,
   TouchableOpacity,
-  Image
+  Image,
+  AsyncStorage,
+  ScrollView
 } from 'react-native'
 import { SocialButton } from '../components/social-button'
 import { colors } from '../theme'
+import fetchModel from '../lib/fetchModel'
 import Accordion from 'react-native-collapsible/Accordion'
 const logo = require('../images/NicOrNot.png')
 
 export default class App extends Component {
   state = {
     statusMessage: '',
-    activeSections: [0]
+    activeSections: [0],
+    modelURL: '',
+    modelString: ''
+  }
+
+  async componentDidMount() {
+    // Are we working with a stored model?
+    const modelURL = (await AsyncStorage.getItem('xURL')) || this.state.modelURL
+    const modelString =
+      (await AsyncStorage.getItem('xString')) || this.state.modelString
+    this.setState({ modelURL, modelString })
   }
 
   renderHeader = section => {
     return <Text style={styles.header}>{section}</Text>
   }
 
+  setModel = async () => {
+    const xURL = this.state.modelURL
+    const xString = this.state.modelString
+
+    if (xURL && xString) {
+      this.setState({
+        statusMessage: 'Fetching and Compiling'
+      })
+      try {
+        downloadedModel = await fetchModel(xURL)
+        await AsyncStorage.setItem('xURL', xURL)
+        await AsyncStorage.setItem('xModel', downloadedModel)
+        await AsyncStorage.setItem('xString', xString)
+        this.setState({ statusMessage: 'Done ✅' })
+      } catch (e) {
+        this.setState({ statusMessage: 'Failed' })
+      }
+    } else {
+      this.setState({
+        statusMessage: 'Missing info'
+      })
+    }
+  }
+
+  resetNic = () => {
+    this.setState({
+      modelURL: '',
+      modelString: '',
+      statusMessage: 'Reset to Nic'
+    })
+    AsyncStorage.removeItem('xURL')
+    AsyncStorage.removeItem('xModel')
+    AsyncStorage.removeItem('xString')
+  }
+
+  setNewURL = value => this.setState({ modelURL: value })
+
+  setNewModelString = value => this.setState({ modelString: value })
+
   renderSettings = () => (
     <View>
       <Text style={styles.paragraph}>Use your own CoreML model on faces.</Text>
       <TextInput
         style={styles.inputModel}
+        autoCapitalize="none"
+        autoCorrect={false}
+        onChangeText={this.setNewURL}
+        value={this.state.modelURL}
         placeholder="Full URL to your CoreML model"
       />
       <TextInput
         style={styles.inputModel}
+        autoCapitalize="none"
+        autoCorrect={false}
+        onChangeText={this.setNewModelString}
+        value={this.state.modelString}
         placeholder="Class string to match"
       />
       <View style={styles.buttonRow}>
-        <TouchableOpacity style={styles.pressy}>
+        <TouchableOpacity
+          style={styles.pressy}
+          onPress={async () => await this.setModel()}
+        >
           <Text style={styles.paragraph}>Fetch</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.reset}>
+        <TouchableOpacity style={styles.reset} onPress={this.resetNic}>
           <Text style={styles.paragraph}>Reset to Nic</Text>
         </TouchableOpacity>
-        <Text style={styles.paragraph}>{this.state.statusMessage}</Text>
+        <Text style={styles.status}>{this.state.statusMessage}</Text>
       </View>
     </View>
   )
@@ -109,17 +172,23 @@ export default class App extends Component {
 
   render() {
     return (
-      <SafeAreaView style={styles.container}>
-        <Image source={logo} style={styles.logo} />
-        <Accordion
-          activeSections={this.state.activeSections}
-          sections={['Settings', 'About this App', 'About Us']}
-          touchableComponent={TouchableOpacity}
-          renderHeader={this.renderHeader}
-          renderContent={this.renderContent}
-          onChange={this.updateSections}
-        />
-      </SafeAreaView>
+      <ScrollView
+        keyboardShouldPersistTaps="always"
+        style={styles.settingsContainer}
+        contentContainerStyle={styles.container}
+      >
+        <SafeAreaView style={styles.container}>
+          <Image source={logo} style={styles.logo} />
+          <Accordion
+            activeSections={this.state.activeSections}
+            sections={['Settings', 'About this App', 'About Us']}
+            touchableComponent={TouchableOpacity}
+            renderHeader={this.renderHeader}
+            renderContent={this.renderContent}
+            onChange={this.updateSections}
+          />
+        </SafeAreaView>
+      </ScrollView>
     )
   }
 }
@@ -129,6 +198,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: colors.dark
+  },
+  settingsContainer: {
     backgroundColor: colors.dark
   },
   logo: {
@@ -158,6 +230,12 @@ const styles = StyleSheet.create({
     color: colors.light,
     fontSize: 16,
     padding: 10
+  },
+  status: {
+    color: colors.accent,
+    fontSize: 15,
+    padding: 5,
+    paddingTop: 15
   },
   inputModel: {
     backgroundColor: colors.light,

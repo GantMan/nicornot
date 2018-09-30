@@ -1284,6 +1284,10 @@ balanced-match@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-1.0.0.tgz#89b4d199ab2bee49de164ea02b89ce462d71b767"
 
+base-64@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/base-64/-/base-64-0.1.0.tgz#780a99c84e7d600260361511c4877613bf24f6bb"
+
 base64-js@0.0.8:
   version "0.0.8"
   resolved "https://registry.yarnpkg.com/base64-js/-/base64-js-0.0.8.tgz#1101e9544f4a76b1bc3b26d452ca96d7a35e7978"
@@ -1291,6 +1295,10 @@ base64-js@0.0.8:
 base64-js@1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/base64-js/-/base64-js-1.1.2.tgz#d6400cac1c4c660976d90d07a04351d89395f5e8"
+
+base64-js@1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/base64-js/-/base64-js-1.2.0.tgz#a39992d723584811982be5e290bb6a53d86700f1"
 
 base64-js@^1.1.2:
   version "1.3.0"
@@ -4049,6 +4057,14 @@ plist@^1.2.0:
     xmlbuilder "4.0.0"
     xmldom "0.1.x"
 
+plist@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/plist/-/plist-2.1.0.tgz#57ccdb7a0821df21831217a3cad54e3e146a1025"
+  dependencies:
+    base64-js "1.2.0"
+    xmlbuilder "8.2.2"
+    xmldom "0.1.x"
+
 plugin-error@^0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/plugin-error/-/plugin-error-0.1.2.tgz#3b9bb3335ccf00f425e07437e19276967da47ace"
@@ -4189,11 +4205,22 @@ react-lifecycles-compat@^3, react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
 
+react-native-camera-ios-enable@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-camera-ios-enable/-/react-native-camera-ios-enable-1.0.1.tgz#98dca969a8d8bf7dc8f18a57fea3c9d1af2983f6"
+  dependencies:
+    glob "^7.1.2"
+    plist "^2.1.0"
+
 react-native-collapsible@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/react-native-collapsible/-/react-native-collapsible-1.0.0.tgz#ae84363639cade8f48599c86a4d9168101cc584f"
   dependencies:
     prop-types "^15.6.2"
+
+react-native-coreml@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/react-native-coreml/-/react-native-coreml-1.2.0.tgz#ca92970198dd9dbdd3cdfe184a10ae5b83a4aeac"
 
 react-native-dismiss-keyboard@1.0.0:
   version "1.0.0"
@@ -4217,6 +4244,17 @@ react-native-fix-xcode-10@rhdeck/react-native-fix-xcode-10:
   dependencies:
     glob "^7.1.2"
 
+react-native-fs@^2.11.16:
+  version "2.11.16"
+  resolved "https://registry.yarnpkg.com/react-native-fs/-/react-native-fs-2.11.16.tgz#efcc1d609db856f452f04c32581086c3adba49ed"
+  dependencies:
+    base-64 "^0.1.0"
+    utf8 "^2.1.1"
+
+react-native-identifier@^0.4.5:
+  version "0.4.5"
+  resolved "https://registry.yarnpkg.com/react-native-identifier/-/react-native-identifier-0.4.5.tgz#d72e06f1776fbc3237abbc39e59d9e4051f182f1"
+
 react-native-safe-area-view@0.11.0:
   version "0.11.0"
   resolved "https://registry.yarnpkg.com/react-native-safe-area-view/-/react-native-safe-area-view-0.11.0.tgz#4f3dda43c2bace37965e7c6aef5fc83d4f19d174"
@@ -4226,6 +4264,13 @@ react-native-safe-area-view@0.11.0:
 react-native-screens@^1.0.0-alpha.11:
   version "1.0.0-alpha.12"
   resolved "https://registry.yarnpkg.com/react-native-screens/-/react-native-screens-1.0.0-alpha.12.tgz#5953c39c9dbfbe324610005e07d85a416081c48c"
+
+react-native-swift@^1.2.0, react-native-swift@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/react-native-swift/-/react-native-swift-1.2.1.tgz#422a0ea1ec5f02ecbb67dd8d3ea0c6a3f1d09829"
+  dependencies:
+    glob "^7.1.2"
+    xcode rhdeck/cordova-node-xcode
 
 react-native-tab-view@^0.0.77:
   version "0.0.77"
@@ -4238,6 +4283,13 @@ react-native-tab-view@^1.0.0:
   resolved "https://registry.yarnpkg.com/react-native-tab-view/-/react-native-tab-view-1.0.2.tgz#66e0bc6d38a227ed2b212e3a256b7902f6ce02ed"
   dependencies:
     prop-types "^15.6.1"
+
+react-native-vision@rhdeck/react-native-vision:
+  version "1.3.1"
+  resolved "https://codeload.github.com/rhdeck/react-native-vision/tar.gz/8469dd38dfdd6f16dd0d25bfb314e9d795445837"
+  dependencies:
+    react "^16.3.2"
+    react-native-swift "^1.2.0"
 
 react-native@0.55.4:
   version "0.55.4"
@@ -4380,6 +4432,15 @@ react@16.3.1:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
     prop-types "^15.6.0"
+
+react@^16.3.2:
+  version "16.5.2"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.5.2.tgz#19f6b444ed139baa45609eee6dc3d318b3895d42"
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+    prop-types "^15.6.2"
+    schedule "^0.5.0"
 
 read-pkg-up@^1.0.1:
   version "1.0.1"
@@ -4652,6 +4713,12 @@ sax@^1.2.4:
 sax@~1.1.1:
   version "1.1.6"
   resolved "http://registry.npmjs.org/sax/-/sax-1.1.6.tgz#5d616be8a5e607d54e114afae55b7eaf2fcc3240"
+
+schedule@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/schedule/-/schedule-0.5.0.tgz#c128fffa0b402488b08b55ae74bb9df55cc29cc8"
+  dependencies:
+    object-assign "^4.1.1"
 
 "semver@2 || 3 || 4 || 5", semver@5.x, semver@^5.0.1, semver@^5.0.3, semver@^5.1.0, semver@^5.3.0, semver@^5.4.1, semver@^5.5.0:
   version "5.5.1"
@@ -5170,6 +5237,10 @@ use@^3.1.0:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/use/-/use-3.1.1.tgz#d50c8cac79a19fbc20f2911f56eb973f4e10070f"
 
+utf8@^2.1.1:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/utf8/-/utf8-2.1.2.tgz#1fa0d9270e9be850d9b05027f63519bf46457d96"
+
 util-deprecate@1.0.2, util-deprecate@~1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
@@ -5349,6 +5420,14 @@ ws@^5.2.0:
 xcode@^0.9.1:
   version "0.9.3"
   resolved "https://registry.yarnpkg.com/xcode/-/xcode-0.9.3.tgz#910a89c16aee6cc0b42ca805a6d0b4cf87211cf3"
+  dependencies:
+    pegjs "^0.10.0"
+    simple-plist "^0.2.1"
+    uuid "3.0.1"
+
+xcode@rhdeck/cordova-node-xcode:
+  version "2.1.2"
+  resolved "https://codeload.github.com/rhdeck/cordova-node-xcode/tar.gz/f9b3f947b6f0e8d4610bdcc5711477f80f664479"
   dependencies:
     pegjs "^0.10.0"
     simple-plist "^0.2.1"
