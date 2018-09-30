@@ -38,6 +38,7 @@
 		38D36205215E775700519140 /* RNPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2196BCE0841743B794E0D2EA /* RNPlaceholder.swift */; };
 		38D36206215E775700519140 /* RNPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2196BCE0841743B794E0D2EA /* RNPlaceholder.swift */; };
 		38D36207215E775700519140 /* RNPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2196BCE0841743B794E0D2EA /* RNPlaceholder.swift */; };
+		38E7CB6D216123ED00B6BFE9 /* MegaNic50_linear_5.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 38E7CB6C216123ED00B6BFE9 /* MegaNic50_linear_5.mlmodel */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		A6FD15B242BD442FB42A23B9 /* libreact-native-coreml.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 293D3179B8D34BC1A9FB388D /* libreact-native-coreml.a */; };
@@ -377,6 +378,7 @@
 		2D02E47B1E0B4A5D006451C7 /* NicOrNotApp-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NicOrNotApp-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* NicOrNotApp-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NicOrNotApp-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		38E7CB6C216123ED00B6BFE9 /* MegaNic50_linear_5.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MegaNic50_linear_5.mlmodel; sourceTree = "<group>"; };
 		3C351C97B03347F6B64FE30E /* libRHDVision.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRHDVision.a; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		6FE0BBFBD00744F181621BB5 /* RNFS.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNFS.xcodeproj; path = "../node_modules/react-native-fs/RNFS.xcodeproj"; sourceTree = "<group>"; };
@@ -527,6 +529,7 @@
 		13B07FAE1A68108700A75B9A /* NicOrNotApp */ = {
 			isa = PBXGroup;
 			children = (
+				38E7CB6C216123ED00B6BFE9 /* MegaNic50_linear_5.mlmodel */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -1248,6 +1251,7 @@
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				38E7CB6D216123ED00B6BFE9 /* MegaNic50_linear_5.mlmodel in Sources */,
 				CB4EA2BB90604F838215C2A9 /* RNPlaceholder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

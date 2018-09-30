@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import RNFS from 'react-native-fs'
 import Training from './training'
 import {
   StyleSheet,
@@ -15,10 +16,11 @@ import { Identifier } from 'react-native-identifier'
 // Emulate a fresh device by removing showIntro key
 // AsyncStorage.removeItem('showIntro')
 
+const nudge = -10
 const logo = require('../images/non.png')
 const flipIcon = require('../images/flip.png')
 const defaultName = 'nic'
-const defaultModelPath = ''
+const defaultModelPath = RNFS.MainBundlePath + '/MegaNic50_linear_5.mlmodelc'
 export default class App extends Component {
   state = {
     showIntro: false,
@@ -82,7 +84,7 @@ export default class App extends Component {
                 return (
                   <Identifier
                     key={key}
-                    style={style}
+                    style={{ ...style, marginTop: nudge }}
                     horizontal
                     accuracy={
                       face === this.state.successFace ? faceConfidence : 0
