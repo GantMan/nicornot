@@ -5487,7 +5487,7 @@ xcode@^0.9.1:
     simple-plist "^0.2.1"
     uuid "3.0.1"
 
-"xcode@github:rhdeck/cordova-node-xcode", xcode@rhdeck/cordova-node-xcode:
+xcode@rhdeck/cordova-node-xcode:
   version "2.1.2"
   resolved "https://codeload.github.com/rhdeck/cordova-node-xcode/tar.gz/f9b3f947b6f0e8d4610bdcc5711477f80f664479"
   dependencies:
