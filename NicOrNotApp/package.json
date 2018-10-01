@@ -22,11 +22,19 @@
     "babel-jest": "23.6.0",
     "babel-preset-react-native": "4.0.1",
     "jest": "23.6.0",
+    "react-native-appicons": "^1.1.1",
     "react-native-fix-xcode-10": "rhdeck/react-native-fix-xcode-10",
+    "react-native-launchimages": "^1.0.0",
     "react-test-renderer": "16.3.1"
   },
   "jest": {
     "preset": "react-native"
   },
-  "isSwift": true
+  "isSwift": true,
+  "appIcon": "https://i.imgur.com/PkGwIT5.png",
+  "launchImageInfo": {
+    "pathorurl": "https://i.imgur.com/PkGwIT5.png",
+    "type": "center",
+    "backgroundColor": "#222"
+  }
 }

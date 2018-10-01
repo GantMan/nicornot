@@ -1456,6 +1456,14 @@ chardet@^0.4.0:
   version "0.4.2"
   resolved "https://registry.yarnpkg.com/chardet/-/chardet-0.4.2.tgz#b5473b33dc97c424e5d98dc87d55d4d8a29c8bf2"
 
+child-process-promise@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/child-process-promise/-/child-process-promise-2.2.1.tgz#4730a11ef610fad450b8f223c79d31d7bdad8074"
+  dependencies:
+    cross-spawn "^4.0.2"
+    node-version "^1.0.0"
+    promise-polyfill "^6.0.1"
+
 chownr@^1.0.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/chownr/-/chownr-1.1.1.tgz#54726b8b8fff4df053c42187e801fb4412df1494"
@@ -1651,6 +1659,13 @@ create-react-context@0.2.2:
   dependencies:
     fbjs "^0.8.0"
     gud "^1.0.0"
+
+cross-spawn@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-4.0.2.tgz#7b9247621c23adfdd3856004a823cbe397424d41"
+  dependencies:
+    lru-cache "^4.0.1"
+    which "^1.2.9"
 
 cross-spawn@^5.0.1, cross-spawn@^5.1.0:
   version "5.1.0"
@@ -2002,7 +2017,7 @@ extend@~3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/extend/-/extend-3.0.2.tgz#f8b1136b4071fbd8eb140aff858b1019ec2915fa"
 
-external-editor@^2.0.4:
+external-editor@^2.0.4, external-editor@^2.1.0:
   version "2.2.0"
   resolved "http://registry.npmjs.org/external-editor/-/external-editor-2.2.0.tgz#045511cfd8d133f3846673d1047c154e214ad3d5"
   dependencies:
@@ -2483,6 +2498,25 @@ inquirer@^3.0.6:
     cli-cursor "^2.1.0"
     cli-width "^2.0.0"
     external-editor "^2.0.4"
+    figures "^2.0.0"
+    lodash "^4.3.0"
+    mute-stream "0.0.7"
+    run-async "^2.2.0"
+    rx-lite "^4.0.8"
+    rx-lite-aggregates "^4.0.8"
+    string-width "^2.1.0"
+    strip-ansi "^4.0.0"
+    through "^2.3.6"
+
+inquirer@^4.0.1:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/inquirer/-/inquirer-4.0.2.tgz#cc678b4cbc0e183a3500cc63395831ec956ab0a3"
+  dependencies:
+    ansi-escapes "^3.0.0"
+    chalk "^2.0.0"
+    cli-cursor "^2.1.0"
+    cli-width "^2.0.0"
+    external-editor "^2.1.0"
     figures "^2.0.0"
     lodash "^4.3.0"
     mute-stream "0.0.7"
@@ -3723,6 +3757,10 @@ node-pre-gyp@^0.10.0:
     semver "^5.3.0"
     tar "^4"
 
+node-version@^1.0.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/node-version/-/node-version-1.2.0.tgz#34fde3ffa8e1149bd323983479dda620e1b5060d"
+
 nopt@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/nopt/-/nopt-4.0.1.tgz#d0d4685afd5415193c8c7505602d0d17cd64474d"
@@ -4114,6 +4152,10 @@ process@~0.5.1:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/process/-/process-0.5.2.tgz#1638d8a8e34c2f440a91db95ab9aeb677fc185cf"
 
+promise-polyfill@^6.0.1:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/promise-polyfill/-/promise-polyfill-6.1.0.tgz#dfa96943ea9c121fca4de9b5868cb39d3472e057"
+
 promise@^7.1.1:
   version "7.3.1"
   resolved "https://registry.yarnpkg.com/promise/-/promise-7.3.1.tgz#064b72602b18f90f29192b8b1bc418ffd1ebd3bf"
@@ -4205,6 +4247,15 @@ react-lifecycles-compat@^3, react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
 
+react-native-appicons@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/react-native-appicons/-/react-native-appicons-1.1.1.tgz#0827196d48f213340f0887a0c4a2a5032578af70"
+  dependencies:
+    child-process-promise "^2.2.1"
+    inquirer "^4.0.1"
+    request "^2.83.0"
+    temp "^0.8.3"
+
 react-native-camera-ios-enable@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/react-native-camera-ios-enable/-/react-native-camera-ios-enable-1.0.1.tgz#98dca969a8d8bf7dc8f18a57fea3c9d1af2983f6"
@@ -4254,6 +4305,17 @@ react-native-fs@^2.11.16:
 react-native-identifier@^0.4.5:
   version "0.4.5"
   resolved "https://registry.yarnpkg.com/react-native-identifier/-/react-native-identifier-0.4.5.tgz#d72e06f1776fbc3237abbc39e59d9e4051f182f1"
+
+react-native-launchimages@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-launchimages/-/react-native-launchimages-1.0.0.tgz#39e261ca7ae67273d6e34299424f1147d091d2f7"
+  dependencies:
+    child-process-promise "^2.2.1"
+    inquirer "^4.0.1"
+    plist "^2.1.0"
+    request "^2.83.0"
+    temp "^0.8.3"
+    xcode rhdeck/cordova-node-xcode
 
 react-native-safe-area-view@0.11.0:
   version "0.11.0"
@@ -4575,7 +4637,7 @@ request-promise-native@^1.0.5:
     stealthy-require "^1.1.0"
     tough-cookie ">=2.3.3"
 
-request@^2.87.0:
+request@^2.83.0, request@^2.87.0:
   version "2.88.0"
   resolved "https://registry.yarnpkg.com/request/-/request-2.88.0.tgz#9c2fca4f7d35b592efe57c7f0a55e81052124fef"
   dependencies:
@@ -5070,7 +5132,7 @@ tar@^4:
     safe-buffer "^5.1.2"
     yallist "^3.0.2"
 
-temp@0.8.3:
+temp@0.8.3, temp@^0.8.3:
   version "0.8.3"
   resolved "https://registry.yarnpkg.com/temp/-/temp-0.8.3.tgz#e0c6bc4d26b903124410e4fed81103014dfc1f59"
   dependencies:
@@ -5425,7 +5487,7 @@ xcode@^0.9.1:
     simple-plist "^0.2.1"
     uuid "3.0.1"
 
-xcode@rhdeck/cordova-node-xcode:
+"xcode@github:rhdeck/cordova-node-xcode", xcode@rhdeck/cordova-node-xcode:
   version "2.1.2"
   resolved "https://codeload.github.com/rhdeck/cordova-node-xcode/tar.gz/f9b3f947b6f0e8d4610bdcc5711477f80f664479"
   dependencies:
