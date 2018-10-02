@@ -1,62 +1,9 @@
-# Nic Or Not
-Please forgive the mess!
+Welcome to the full madness of Nic or Not!
 
-Here's the code for gathering the data for the NicOrNot model.
+Here you'll find sourcecode for:
 
-## Gathering images
-
-#### Getting Chrome Driver (Mac)
-`brew tap homebrew/cask`
-`brew cask install chromedriver`
-`which chromedriver`
-
-#### Running image grabber
-via https://github.com/hardikvasa/google-images-download
-`googleimagesdownload -cf cage_grabs.json`
-
-Afraid of just crazy people?  Add Chad Kroeger!
-
-#### Remove dupes
-https://macpaw.com/gemini (caught 1)
-
-#### Go through data manually and delete from positives
-Deleting positives: OMG LOL - GF walked by while doing this...
-Deleting negatives:  finding nic cage here, too
-
-#### Move 20% of the data to Test
-Create `Testing Data` with `nic` and `not` folders with 20% of the finalized data.
-
-### JUST FACES? - Parse through image data and just gather faces
-Install the needed face recognition library:
-```shell
-$ pip install face_recognition
-```
-
-Now run the following command to convert Testing/Training data to just faces
-```shell
-$ ./faceoff.sh
-```
-
-If it fails on an image, delete the source image.  Then when it is 100% successful, all faces will be stored to `nicornotfaces` folders as JPGs; go through the resulting files and delete false positives for nic.
-
-
-## Convert `.cafe` to CoreML `mlmodel`
-
-#### Install Coremltools
-For running `convert.py` make sure you have 'coremltools' installed first.
-
-```
-$ pip install -U coremltools --user
-```
-
-#### Then convert and downsize
-
-Convert file to new type
-```
-$ python convert.py
-```
-
-Cut file size in half - quantize model weights
-```
-$ python downsize.py
-```
+- The mobile app - Nic or Not - [[Code](./NicOrNotApp)]
+- The fun website Declaration of Independence Thief - [[Code](./declarationofindependencethief), [Site](https://declarationofindependencethief.com/)]
+- The app website Nic or Not - [[Code](./nicornotcom), [Site](https://nicornot.com/)]
+- The python code to gather the data for the model - [[Code](./datagrab)]
+- The resulting model file links - [[Index](./models)]
