@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test": "jest",
+    "deploy": "cd ios && fastlane beta && cd -"
   },
   "dependencies": {
     "react": "16.3.1",
@@ -27,6 +28,7 @@
     "react-native-launchimages": "^1.0.0",
     "react-test-renderer": "16.3.1"
   },
+  "IOSCameraPrivacyText": "This app requires access to the camera in order to identify faces.",
   "jest": {
     "preset": "react-native"
   },
