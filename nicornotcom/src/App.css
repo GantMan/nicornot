@@ -3,14 +3,14 @@ a {
 }
 
 #footer {
-  position:absolute;
-  bottom:0;
-  width:100%;
-  height:60px;   /* Height of the footer */
-  background:#027abb;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px; /* Height of the footer */
+  background: #027abb;
 }
 
-#footer ul li{
+#footer ul li {
   display: inline;
   padding: 0 40px;
 }
@@ -24,9 +24,9 @@ a {
 }
 
 body {
-  margin:0;
-  padding:0;
-  height:90%;
+  margin: 0;
+  padding: 0;
+  height: 90%;
   background-color: #222;
 }
 
@@ -52,8 +52,12 @@ body {
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .linkStuff {

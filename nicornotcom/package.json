@@ -5,12 +5,13 @@
   "dependencies": {
     "@tensorflow/tfjs": "^0.13.0",
     "@tensorflow/tfjs-converter": "^0.6.0",
+    "face-api.js": "^0.14.1",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-scripts": "1.1.5"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "PORT=3006 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
