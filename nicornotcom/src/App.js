@@ -91,27 +91,37 @@ class App extends Component {
       // const result = await this.loadMobileNet(img) // mobile net model
       // const result = await this.loadNicNet(img)
       const result = 0
+      let faceImages
       try {
         // window.alert(faceapi.loadFaceDetectionModel)
         await faceapi.loadFaceDetectionModel(
           './face_detection/face_detection_model-weights_manifest.json'
         )
+        // await faceapi.loadFaceRecognitionModel('./weights_manifest.json')
         const width = img.width
         const height = img.height
         const overlay = this.refs.overlay
         overlay.width = width
         overlay.height = height
+
+        // THIS WOULD DRAW FACE BOXES ON OVERLAY
         const faces = await faceapi.locateFaces(img, 0.5)
         faceapi.drawDetection(
           overlay,
           faces.map(det => det.forSize(width, height))
         )
+        const input = await faceapi.toNetInput(img)
+        faceImages = await faceapi.extractFaces(input.canvases[0], faces)
       } catch (e) {
         window.alert('Locating faces failed: ' + e.message)
       }
 
       // this.setState({ classification: result }) // just result index
-      this.setState({ currentImage: img, classification: OPTIONS[result] })
+      // this.setState({ currentImage: img, classification: OPTIONS[result] })
+      this.setState({
+        currentImage: img,
+        classification: faceImages.length + ' faces'
+      })
     }
   }
 
