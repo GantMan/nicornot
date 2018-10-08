@@ -19,7 +19,7 @@
     <key>CFBundleSignature</key>
     <string>????</string>
     <key>CFBundleVersion</key>
-    <string>8</string>
+    <string>9</string>
     <key>LSRequiresIPhoneOS</key>
     <true/>
     <key>UILaunchStoryboardName</key>
@@ -50,6 +50,6 @@
       </dict>
     </dict>
     <key>NSCameraUsageDescription</key>
-    <string>This app requires the camera to function</string>
+    <string>This app requires access to the camera in order to identify faces.</string>
   </dict>
 </plist>
