@@ -12,7 +12,8 @@ const WEIGHTS_URL = 'weights_manifest.json'
 class App extends Component {
   state = {
     classification: 'Loading',
-    currentImage: null
+    currentImage: null,
+    faces: []
   }
 
   preprocces = img => {
@@ -79,19 +80,22 @@ class App extends Component {
     // img.src = 'https://i.imgur.com/IYNZ3UN.jpg' // not
     // img.src = 'https://i.imgur.com/fV7Sm6s.jpg' // nic
     // img.src = 'https://i.imgur.com/FQWxcKg.jpg' // nic
+    img.src = 'https://i.imgur.com/kTTAElA.jpg'
     // img.src = 'https://i.imgur.com/5wJryHC.jpg' // nic
     // img.src = 'https://i.imgur.com/fUm1zSu.jpg' // not
     // img.src = "https://i.imgur.com/rF6bW1F.jpg" // not
     // img.src = "https://i.imgur.com/WWXVhFX.jpg" // not
     // img.src = "https://i.imgur.com/qg4a4oU.jpg" // not
-    img.src =
-      'https://media.istockphoto.com/photos/friendship-picture-id532969250?k=6&m=532969250&s=612x612&w=0&h=Vlf2_iNPkEjbCNozIbZlScGfRx4fDSpGphGM9P1XGFQ='
+    // img.src =
+    // 'https://media.istockphoto.com/photos/friendship-picture-id532969250?k=6&m=532969250&s=612x612&w=0&h=Vlf2_iNPkEjbCNozIbZlScGfRx4fDSpGphGM9P1XGFQ='
+    // img.src = 'http://www.gstatic.com/tv/thumb/persons/258/258_v9_ba.jpg'
 
     img.onload = async () => {
       // const result = await this.loadMobileNet(img) // mobile net model
       // const result = await this.loadNicNet(img)
-      const result = 0
+      // const result = 0
       let faceImages
+      let result
       try {
         // window.alert(faceapi.loadFaceDetectionModel)
         await faceapi.loadFaceDetectionModel(
@@ -112,6 +116,11 @@ class App extends Component {
         )
         const input = await faceapi.toNetInput(img)
         faceImages = await faceapi.extractFaces(input.canvases[0], faces)
+        const firstFace = new Image()
+        firstFace.width = 227
+        firstFace.height = 227
+        firstFace.src = faceImages[0].toDataURL()
+        result = await this.loadNicNet(firstFace)
       } catch (e) {
         window.alert('Locating faces failed: ' + e.message)
       }
@@ -120,10 +129,17 @@ class App extends Component {
       // this.setState({ currentImage: img, classification: OPTIONS[result] })
       this.setState({
         currentImage: img,
-        classification: faceImages.length + ' faces'
+        classification: OPTIONS[result],
+        // classification: faceImages.length + ' faces',
+        faces: faceImages
       })
     }
   }
+
+  renderFaces = () =>
+    this.state.faces.map((faceCanvas, idx) => (
+      <img key={idx} src={faceCanvas.toDataURL()} />
+    ))
 
   render() {
     const imgURL = this.state.currentImage ? this.state.currentImage.src : ''
@@ -145,11 +161,13 @@ class App extends Component {
               style={{
                 position: 'absolute',
                 top: 0,
-                left: 0
+                left: 0,
+                maxWidth: '800px'
               }}
               ref="overlay"
             />
           </div>
+          {this.renderFaces()}
           <h1 className="App-title">
             {' '}
             <em>{this.state.classification}</em>{' '}
