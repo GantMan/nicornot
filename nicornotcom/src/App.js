@@ -146,7 +146,6 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
           <div
             style={{
               position: 'relative',
@@ -173,22 +172,6 @@ class App extends Component {
             <em>{this.state.classification}</em>{' '}
           </h1>
         </header>
-        <div id="footer">
-          <ul>
-            <li>Copyright Now(ish)</li>
-            <li>
-              <a href="http://declarationofindependencethief.com/">
-                Declaration of Independence Thief Site
-              </a>
-            </li>
-            <li>
-              <a href="https://github.com/gantman/nicornot">GitHub Repo</a>
-            </li>
-            <li>
-              <a href="https://slides.com/gantlaborde/cage#/">Slides</a>
-            </li>
-          </ul>
-        </div>
       </div>
     )
   }
