@@ -71,10 +71,12 @@ class App extends Component {
   componentDidMount() {
     let img = new Image()
     img.crossOrigin = '*'
+    // Sized down later on the extracted face
     // img.width = 224
     // img.height = 224
     // img.width = 227
     // img.height = 227
+
     // img.src = 'https://i.imgur.com/p2mewNT.jpg' // not
     // img.src = 'https://i.imgur.com/BPLtsDR.jpg' // not
     // img.src = 'https://i.imgur.com/IYNZ3UN.jpg' // not
