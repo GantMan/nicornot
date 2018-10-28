@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import logo from './NicOrNot.png'
+import nicPic from './nicsource.jpeg'
 import './App.css'
 import * as faceapi from 'face-api.js'
 import Dropzone from 'react-dropzone'
@@ -13,17 +14,14 @@ class App extends Component {
     thing: logo
   }
 
-  async componentDidMount() {
-    await faceapi.loadFaceRecognitionModel('/face_model')
-    this.setState({
-      classification: 'done loading model'
-    })
-    const nic = await faceapi.fetchImage('https://i.imgur.com/DbWl5xs.jpg')
+  checkFaces = async () => {
+    // const nic = await faceapi.fetchImage('https://i.imgur.com/ASvFZxs.jpg')
+    const nic = await faceapi.fetchImage('https://i.imgur.com/GzBMITw.jpg')
     const nicDescript = await faceapi.computeFaceDescriptor(nic)
 
     // const otherURL = 'https://i.imgur.com/fUm1zSu.jpg' // not
     // const otherURL = 'https://i.imgur.com/fV7Sm6s.jpg' // nic
-    const otherURL = 'https://i.imgur.com/qg4a4oU.jpg' // not
+    const otherURL = this.state.thing
 
     const other = await faceapi.fetchImage(otherURL)
     const otherDescript = await faceapi.computeFaceDescriptor(other)
@@ -37,9 +35,17 @@ class App extends Component {
     })
   }
 
+  async componentDidMount() {
+    await faceapi.loadFaceRecognitionModel('/face_model')
+    this.setState({
+      classification: 'done loading model'
+    })
+  }
+
   onDrop = (accepted, rejected) => {
     if (rejected.length > 0) window.alert('JPG or PNG only plz')
     this.setState({ files: accepted })
+    this.checkFaces()
   }
 
   render() {
@@ -64,11 +70,15 @@ class App extends Component {
             onDrop={this.onDrop.bind(this)}
           >
             <img src={this.state.thing} className="dropped-photo" />
-            <p>Drop your file here or click.</p>
+            <p>Drop your file here or click to browse.</p>
           </Dropzone>
         </header>
         <div>
-          <p>{this.state.classification}</p>
+          <p>
+            {Number(this.state.classification) < 0.5
+              ? 'Nic Detected ' + this.state.classification
+              : 'No Nic Detected' + this.state.classification}
+          </p>
           <h2>Also: Available in Mobile App</h2>
           <img src="nic_clip.gif" />
           <p>
