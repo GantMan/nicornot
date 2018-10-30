@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "face-api.js": "^0.15.0",
+    "face-api.js": "^0.15.1",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-dropzone": "^6.2.4",

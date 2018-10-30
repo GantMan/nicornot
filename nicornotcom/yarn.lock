@@ -2705,9 +2705,9 @@ extsprintf@^1.2.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/extsprintf/-/extsprintf-1.4.0.tgz#e2689f8f356fad62cca65a3a91c5df5f9551692f"
 
-face-api.js@^0.15.0:
-  version "0.15.0"
-  resolved "https://registry.yarnpkg.com/face-api.js/-/face-api.js-0.15.0.tgz#836beef15b8126086e15261e06be85513066cc2f"
+face-api.js@^0.15.1:
+  version "0.15.1"
+  resolved "https://registry.yarnpkg.com/face-api.js/-/face-api.js-0.15.1.tgz#d748d41be878adc2eac2f95098acb3f882c4d7b8"
   dependencies:
     "@tensorflow/tfjs-core" "^0.13.2"
     tfjs-image-recognition-base "^0.1.3"

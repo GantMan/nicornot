@@ -3,6 +3,7 @@ import logo from './NicOrNot.png'
 import nicPic from './nicsource.jpeg'
 import './App.css'
 import * as faceapi from 'face-api.js'
+
 import Dropzone from 'react-dropzone'
 
 class App extends Component {
@@ -17,17 +18,24 @@ class App extends Component {
   checkFaces = async () => {
     // const nic = await faceapi.fetchImage('https://i.imgur.com/ASvFZxs.jpg')
     const nic = await faceapi.fetchImage('https://i.imgur.com/GzBMITw.jpg')
-    const nicDescript = await faceapi.computeFaceDescriptor(nic)
-
+    // const nicDescript = await faceapi.computeFaceDescriptor(nic)
+    // NOT EXPOSED
+    // const nicDescript = await faceapi.detectAllFaces(nic, faceDetector)
+    const nicDescript = await faceapi.allFacesSsdMobilenetv1(nic)
+        // .withFaceLandmarks()
+        // .withFaceDescriptors()[0]
+    console.log('nicDescript', nicDescript)
     // const otherURL = 'https://i.imgur.com/fUm1zSu.jpg' // not
     // const otherURL = 'https://i.imgur.com/fV7Sm6s.jpg' // nic
     const otherURL = this.state.thing
 
     const other = await faceapi.fetchImage(otherURL)
-    const otherDescript = await faceapi.computeFaceDescriptor(other)
+    // const otherDescript = await faceapi.detectAll
+    const otherDescript = await faceapi.allFacesSsdMobilenetv1(other)
+    console.log('otherDescript', otherDescript)
 
     const distance = faceapi.round(
-      faceapi.euclideanDistance(nicDescript, otherDescript)
+      faceapi.euclideanDistance(nicDescript[0].descriptor, otherDescript[0].descriptor)
     )
 
     this.setState({
@@ -37,6 +45,8 @@ class App extends Component {
 
   async componentDidMount() {
     await faceapi.loadFaceRecognitionModel('/face_model')
+    await faceapi.loadSsdMobilenetv1Model('/face_model')
+    await faceapi.loadFaceLandmarkModel('/face_model')
     this.setState({
       classification: 'done loading model'
     })
