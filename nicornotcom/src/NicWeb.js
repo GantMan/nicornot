@@ -58,6 +58,7 @@ export default class NicWeb extends Component {
           )
         )
       }
+      return null //no need for results
     })
 
     faceapi.drawDetection(this.refs.overlay, boxesWithText)
@@ -69,21 +70,31 @@ export default class NicWeb extends Component {
   }
 
   setFile = file => {
-    const reader = new FileReader()
-    reader.onload = e => {
-      this.setState({ classification: null, graphic: e.target.result })
+    if (typeof file === 'string') {
+      // using a sample
+      this.setState({ classification: null, graphic: file })
+    } else {
+      // drag and dropped
+      const reader = new FileReader()
+      reader.onload = e => {
+        this.setState({ classification: null, graphic: e.target.result })
+      }
+
+      reader.readAsDataURL(file)
     }
 
-    reader.readAsDataURL(file)
   }
 
   onDrop = (accepted, rejected) => {
-    if (rejected.length > 0) window.alert('JPG or PNG only plz')
-    this.setState({
-      status: 'Processing'
-    })
-    this.setFile(accepted[0])
-    this.checkFaces()
+    if (rejected.length > 0) {
+      window.alert('JPG or PNG only plz')
+    } else {
+      this.setState({
+        status: 'Processing'
+      })
+      this.setFile(accepted[0])
+      this.checkFaces()
+    }
   }
 
   renderNicImage = () => {
@@ -95,13 +106,20 @@ export default class NicWeb extends Component {
             ? './yes.png'
             : './no.png'
 
-        return <img src={nicPath} id="detection" />
+        return <img src={nicPath} alt={nicPath} id="detection" />
       }
     } else {
       nicPath = './processingFaces.gif'
-      return <img src={nicPath} className="processing" />
+      return <img src={nicPath} alt="processing" className="processing" />
     }
   }
+
+  renderSampleImages = (urlArray) =>
+    <div>
+      {urlArray.map(srcURL =>
+        <img style={{height: 100}} alt={srcURL} src={srcURL} onClick={() => this.onDrop([srcURL], [])} />
+      )}
+    </div>
 
   render() {
     return (
@@ -112,6 +130,7 @@ export default class NicWeb extends Component {
         </p>
         {this.renderNicImage()}
         <header className="App-header">
+          <div>
           <Dropzone
             accept="image/jpeg, image/png"
             className="photo-box"
@@ -119,6 +138,7 @@ export default class NicWeb extends Component {
           >
             <img
               src={this.state.graphic}
+              alt="your nic here"
               className="dropped-photo"
               ref="dropped"
             />
@@ -133,7 +153,12 @@ export default class NicWeb extends Component {
             />
             <p>Drop your image here or click to browse.</p>
           </Dropzone>
+          </div>
         </header>
+          <div style={{paddingTop: 20}}>
+            <p>Or click these:</p>
+            {this.renderSampleImages(['/examples/example1.jpg', '/examples/example2.jpg', '/examples/example3.jpg', '/examples/example4.jpg', '/examples/example5.jpg', '/examples/example6.jpg', '/examples/example7.jpg', '/examples/example8.jpg'])}
+          </div>
         <div>
           <h2>
             <Link to="/mobile/">Also available for iOS</Link>

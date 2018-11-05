@@ -15,12 +15,13 @@ export default class NicMobile extends Component {
             The Nic Cage detecting app!{' '}
             <Link to="/">Or use the web version.</Link>
           </p>
-          <img src="/nic_clip.gif" />
+          <img src="/nic_clip.gif" alt="example of mobile app" />
           <p>
             This app is very useful when{' '}
             <a
               href="http://declarationofindependencethief.com/"
               target="_blank"
+              rel="noopener noreferrer"
             >
               someone steals the Declaration of Independence
             </a>
@@ -28,6 +29,7 @@ export default class NicMobile extends Component {
             <a
               href="https://shift.infinite.red/cage-against-the-machine-a419b6980424"
               target="_blank"
+              rel="noopener noreferrer"
             >
               learn more about facial recognition
             </a>
@@ -35,12 +37,13 @@ export default class NicMobile extends Component {
             <a
               href="https://itunes.apple.com/us/app/nic-or-not/id1437819644?ls=1&mt=8"
               target="_blank"
+              rel="noopener noreferrer"
             >
               This App is <strong>currently available on iOS App Store</strong>
             </a>
             .
           </p>
-          <img src="/app.png" className="appStore" alt="app store image" />
+          <img src="/app.png" className="appStore" alt="app store" />
         </div>
         <footer id="footer">
           <ul>
