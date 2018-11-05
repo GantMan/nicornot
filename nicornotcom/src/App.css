@@ -2,6 +2,17 @@ a {
   color: #02bbd7;
 }
 
+header {
+  display: flex;
+  justify-content: center;
+}
+
+h2 {
+  color: white;
+  text-decoration: underline;
+  padding: 20px 0 0 0;
+}
+
 p {
   color: white;
   font-size: 1.2em;
@@ -43,7 +54,18 @@ body {
 }
 
 .App-logo {
-  height: 300px;
+  height: 350px;
+}
+
+.photo-box {
+  padding: 20px;
+  border-width: 5px;
+  border-color: #02bbd7;
+  border-style: dashed;
+}
+
+.dropped-photo {
+  height: 400px;
 }
 
 .App-header {
@@ -60,6 +82,10 @@ body {
 
 .App-intro {
   font-size: large;
+}
+
+#detection {
+  height: 300px;
 }
 
 .appStore {
