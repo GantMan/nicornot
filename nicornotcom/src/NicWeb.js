@@ -79,6 +79,9 @@ export default class NicWeb extends Component {
 
   onDrop = (accepted, rejected) => {
     if (rejected.length > 0) window.alert('JPG or PNG only plz')
+    this.setState({
+      status: 'Processing'
+    })
     this.setFile(accepted[0])
     this.checkFaces()
   }
