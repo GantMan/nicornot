@@ -80,6 +80,10 @@ body {
   /* animation: App-logo-spin infinite 20s linear; */
 }
 
+.processing {
+  animation: process-spin infinite 5s linear;
+}
+
 .App-intro {
   font-size: large;
 }
@@ -96,7 +100,7 @@ body {
   flex: 1;
 }
 
-@keyframes App-logo-spin {
+@keyframes process-spin {
   from {
     transform: rotate(0deg);
   }

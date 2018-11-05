@@ -35,13 +35,6 @@ export default class NicWeb extends Component {
     const otherDescript = await faceapi.allFacesSsdMobilenetv1(other)
     let closestFace = 1
 
-    // const distance = faceapi.round(
-    //   faceapi.euclideanDistance(
-    //     nicDescript[0].descriptor,
-    //     otherDescript[0].descriptor
-    //   )
-    // )
-
     const dropped = this.refs.dropped
     const overlay = this.refs.overlay
     overlay.width = dropped.width
@@ -98,11 +91,13 @@ export default class NicWeb extends Component {
           Number(this.state.classification) < threshHold
             ? './yes.png'
             : './no.png'
+
+        return <img src={nicPath} id="detection" />
       }
     } else {
       nicPath = './processingFaces.gif'
+      return <img src={nicPath} className="processing" />
     }
-    return <img src={nicPath} id="detection" />
   }
 
   render() {
