@@ -9,9 +9,10 @@ const threshHold = 0.6
 
 export default class NicWeb extends Component {
   state = {
-    distance: 0,
+    classification: null,
     graphic: logo,
-    status: 'Loading Models'
+    status: 'Loading Models',
+    nic: null
   }
 
   async componentDidMount() {
@@ -21,15 +22,26 @@ export default class NicWeb extends Component {
     this.setState({
       status: 'Ready'
     })
+    // const nic = await faceapi.fetchImage('./nic_face.jpg')
+    // const nicDescript = await faceapi.allFacesSsdMobilenetv1(nic)
+    // this.setState({
+    //   status: 'Ready',
+    //   nic: nicDescript[0].descriptor
+    // })
   }
 
   checkFaces = async () => {
     this.setState({
-      status: 'Processing Faces'
+      status: 'Processing Nic'
     })
+    faceapi.drawDetection(this.refs.overlay, [])
+
     const nic = await faceapi.fetchImage('./nic_face.jpg')
     const nicDescript = await faceapi.allFacesSsdMobilenetv1(nic)
 
+    this.setState({
+      status: 'Processing Faces'
+    })
     const otherURL = this.state.graphic
     const other = await faceapi.fetchImage(otherURL)
     const otherDescript = await faceapi.allFacesSsdMobilenetv1(other)
@@ -90,6 +102,7 @@ export default class NicWeb extends Component {
       window.alert('JPG or PNG only plz')
     } else {
       this.setState({
+        classification: null,
         status: 'Processing'
       })
       this.setFile(accepted[0])
@@ -110,7 +123,12 @@ export default class NicWeb extends Component {
       }
     } else {
       nicPath = './processingFaces.gif'
-      return <img src={nicPath} alt="processing" className="processing" />
+      return (
+        <div>
+          <img src={nicPath} alt="processing" className="processing" />
+          <p>{this.state.status}</p>
+        </div>
+      )
     }
   }
 
