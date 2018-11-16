@@ -80,8 +80,22 @@ body {
   /* animation: App-logo-spin infinite 20s linear; */
 }
 
+#spinContainer {
+  position: absolute;
+  left: 50%;
+  top: 2.5em;
+}
+
+#nicStatus {
+  position: relative;
+  left: -50%;
+}
+
 .processing {
   animation: process-spin infinite 5s linear;
+  width: 250px;
+  position: relative;
+  left: -50%;
 }
 
 .App-intro {
@@ -89,7 +103,11 @@ body {
 }
 
 #detection {
-  height: 300px;
+  height: 200px;
+}
+
+#gapHolder {
+  height: 203px;
 }
 
 .appStore {

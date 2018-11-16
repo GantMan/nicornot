@@ -12,6 +12,7 @@ export default class NicWeb extends Component {
     classification: null,
     graphic: logo,
     status: 'Loading Models',
+    result: null,
     nic: null
   }
 
@@ -125,8 +126,14 @@ export default class NicWeb extends Component {
       nicPath = './processingFaces.gif'
       return (
         <div>
-          <img src={nicPath} alt="processing" className="processing" />
-          <p>{this.state.status}</p>
+          <div id="spinContainer">
+            <p id="nicStatus">{this.state.status}</p>
+            <img src={nicPath} alt="processing" className="processing" />
+          </div>
+          <div id="gapHolder">
+
+          </div>
+
         </div>
       )
     }
@@ -146,7 +153,6 @@ export default class NicWeb extends Component {
           Identify if a person <em>is</em> or <em>is NOT</em> Nicolas Cage with
           ease.
         </p>
-        {this.renderNicImage()}
         <header className="App-header">
           <div>
           <Dropzone
@@ -171,9 +177,10 @@ export default class NicWeb extends Component {
             />
             <p>Drop your image here or click to browse.</p>
           </Dropzone>
+          {this.renderNicImage()}
           </div>
         </header>
-          <div style={{paddingTop: 20}}>
+          <div>
             <p>Or click these:</p>
             {this.renderSampleImages(['/examples/example1.jpg', '/examples/example2.jpg', '/examples/example3.jpg', '/examples/example4.jpg', '/examples/example5.jpg', '/examples/example6.jpg', '/examples/example7.jpg', '/examples/example8.jpg'])}
           </div>
