@@ -9,26 +9,27 @@ const threshHold = 0.6
 
 export default class NicWeb extends Component {
   state = {
+    nicDescript: null,
     classification: null,
     graphic: logo,
     status: 'Loading Models',
-    result: null,
-    nic: null
+    result: null
   }
 
-  async componentDidMount() {
-    await faceapi.loadSsdMobilenetv1Model('/face_model')
-    await faceapi.loadFaceLandmarkModel('/face_model')
-    await faceapi.loadFaceRecognitionModel('/face_model')
-    this.setState({
-      status: 'Ready'
+  componentDidMount() {
+    Promise.all([
+      faceapi.loadSsdMobilenetv1Model('./face_model'),
+      faceapi.loadFaceLandmarkModel('./face_model'),
+      faceapi.loadFaceRecognitionModel('./face_model')
+    ]).then(async () => {
+      // Eager load descript!
+      const nic = await faceapi.fetchImage('./nic_face.jpg')
+      const nicDescript = await faceapi.allFacesSsdMobilenetv1(nic)
+      this.setState({
+        nicDescript,
+        status: 'Ready'
+      })
     })
-    // const nic = await faceapi.fetchImage('./nic_face.jpg')
-    // const nicDescript = await faceapi.allFacesSsdMobilenetv1(nic)
-    // this.setState({
-    //   status: 'Ready',
-    //   nic: nicDescript[0].descriptor
-    // })
   }
 
   checkFaces = async () => {
@@ -37,17 +38,16 @@ export default class NicWeb extends Component {
     })
     faceapi.drawDetection(this.refs.overlay, [])
 
-    const nic = await faceapi.fetchImage('./nic_face.jpg')
-    const nicDescript = await faceapi.allFacesSsdMobilenetv1(nic)
-
     this.setState({
       status: 'Processing Faces'
     })
     const otherURL = this.state.graphic
+    console.log('graphic', this.state.graphic)
     const other = await faceapi.fetchImage(otherURL)
     const otherDescript = await faceapi.allFacesSsdMobilenetv1(other)
     let closestFace = 1
 
+    // console.log('Other Descript', otherDescript)
     const dropped = this.refs.dropped
     const overlay = this.refs.overlay
     overlay.width = dropped.width
@@ -57,7 +57,10 @@ export default class NicWeb extends Component {
     otherDescript.map(det => {
       // Distance of each face
       let distance = faceapi.round(
-        faceapi.euclideanDistance(nicDescript[0].descriptor, det.descriptor)
+        faceapi.euclideanDistance(
+          this.state.nicDescript[0].descriptor,
+          det.descriptor
+        )
       )
 
       if (distance < threshHold) {
@@ -76,26 +79,30 @@ export default class NicWeb extends Component {
 
     faceapi.drawDetection(this.refs.overlay, boxesWithText)
 
-    this.setState({
+    const newState = {
       status: 'Ready',
       classification: closestFace
-    })
+    }
+    this.setState(newState)
+    // console.log('newState', newState)
   }
 
   setFile = file => {
     if (typeof file === 'string') {
       // using a sample
-      this.setState({ classification: null, graphic: file })
+      this.setState({ classification: null, graphic: file }, this.checkFaces)
     } else {
       // drag and dropped
       const reader = new FileReader()
       reader.onload = e => {
-        this.setState({ classification: null, graphic: e.target.result })
+        this.setState(
+          { classification: null, graphic: e.target.result },
+          this.checkFaces
+        )
       }
 
       reader.readAsDataURL(file)
     }
-
   }
 
   onDrop = (accepted, rejected) => {
@@ -107,7 +114,7 @@ export default class NicWeb extends Component {
         status: 'Processing'
       })
       this.setFile(accepted[0])
-      this.checkFaces()
+      // this.checkFaces()
     }
   }
 
@@ -130,21 +137,24 @@ export default class NicWeb extends Component {
             <p id="nicStatus">{this.state.status}</p>
             <img src={nicPath} alt="processing" className="processing" />
           </div>
-          <div id="gapHolder">
-
-          </div>
-
+          <div id="gapHolder" />
         </div>
       )
     }
   }
 
-  renderSampleImages = (urlArray) =>
+  renderSampleImages = urlArray => (
     <div>
-      {urlArray.map(srcURL =>
-        <img style={{height: 100}} alt={srcURL} src={srcURL} onClick={() => this.onDrop([srcURL], [])} />
-      )}
+      {urlArray.map(srcURL => (
+        <img
+          style={{ height: 100 }}
+          alt={srcURL}
+          src={srcURL}
+          onClick={() => this.onDrop([srcURL], [])}
+        />
+      ))}
     </div>
+  )
 
   render() {
     return (
@@ -155,35 +165,44 @@ export default class NicWeb extends Component {
         </p>
         <header className="App-header">
           <div>
-          <Dropzone
-            accept="image/jpeg, image/png"
-            className="photo-box"
-            onDrop={this.onDrop.bind(this)}
-          >
-            <img
-              src={this.state.graphic}
-              alt="your nic here"
-              className="dropped-photo"
-              ref="dropped"
-            />
-            <canvas
-              style={{
-                position: 'absolute',
-                top: 20,
-                left: 20,
-                maxHeight: '400px'
-              }}
-              ref="overlay"
-            />
-            <p>Drop your image here or click to browse.</p>
-          </Dropzone>
-          {this.renderNicImage()}
+            <Dropzone
+              accept="image/jpeg, image/png"
+              className="photo-box"
+              onDrop={this.onDrop.bind(this)}
+            >
+              <img
+                src={this.state.graphic}
+                alt="your nic here"
+                className="dropped-photo"
+                ref="dropped"
+              />
+              <canvas
+                style={{
+                  position: 'absolute',
+                  top: 20,
+                  left: 20,
+                  maxHeight: '400px'
+                }}
+                ref="overlay"
+              />
+              <p>Drop your image here or click to browse.</p>
+            </Dropzone>
+            {this.renderNicImage()}
           </div>
         </header>
-          <div>
-            <p>Or click these:</p>
-            {this.renderSampleImages(['/examples/example1.jpg', '/examples/example2.jpg', '/examples/example3.jpg', '/examples/example4.jpg', '/examples/example5.jpg', '/examples/example6.jpg', '/examples/example7.jpg', '/examples/example8.jpg'])}
-          </div>
+        <div>
+          <p>Or click these:</p>
+          {this.renderSampleImages([
+            '/examples/example1.jpg',
+            '/examples/example2.jpg',
+            '/examples/example3.jpg',
+            '/examples/example4.jpg',
+            '/examples/example5.jpg',
+            '/examples/example6.jpg',
+            '/examples/example7.jpg',
+            '/examples/example8.jpg'
+          ])}
+        </div>
         <div>
           <h2>
             <Link to="/mobile/">Also available for iOS</Link>
